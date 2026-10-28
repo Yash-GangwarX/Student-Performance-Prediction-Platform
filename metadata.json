@@ -1,0 +1,6 @@
+{
+  "name": "Student Performance Prediction Platform",
+  "description": "An explainable B.Tech AI PBL academic analytics platform for student assessment tracking, multi-category performance prediction, topic risk flags, and printable reports.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

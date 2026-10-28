@@ -1,0 +1,1423 @@
+ STUDENT PERFORMANCE PREDICTION PLATFORM
+
+0. YOUR ROLE AND PRIMARY INSTRUCTION
+
+Act as a senior full-stack software engineer, AI application developer, data analyst, UI/UX designer, software tester, and technical architect.
+
+Build a complete, functional, polished web application with the exact project title:
+
+Student Performance Prediction Platform
+
+This is an undergraduate B.Tech Computer Science Artificial Intelligence PBL project. The application must be suitable for a live faculty demonstration and must have a professional interface, meaningful calculations, working interactions, transparent predictions, useful visualizations, and a complete printable performance report.
+
+Do not create only a landing page, mockup, dashboard screenshot, static prototype, or implementation plan.
+
+Build the actual application, execute it in the available preview environment, test its functionality, and fix discovered errors.
+
+Do not claim that a feature works unless it has been implemented. Do not fabricate prediction accuracy, training results, real student data, test results, citations, or completed features.
+
+When requirements conflict, prioritize correctness, data integrity, privacy, explainability, and a working core application over decorative features.
+
+Do not stop after describing your plan. Proceed to implementation.
+
+1. PROJECT OBJECTIVE
+
+Create a student-performance analytics platform that uses multiple categories of educational data to analyze academic progress, estimate future assessment performance when sufficient evidence exists, identify topics that may need revision, and generate practical study recommendations.
+
+The platform must answer these questions:
+
+How has the student performed in previous assessments?
+
+Which subjects and topics are strong or weak?
+
+Is performance improving, declining, or stable?
+
+How consistently does the student complete assessments and practice activities?
+
+What other recorded factors may help explain academic outcomes?
+
+What score might the student achieve in the next assessment, based on a documented prediction method?
+
+How reliable is the estimate, given the available data?
+
+Which topic should the student revise next, and why?
+
+Can the student or teacher generate a detailed, professional report containing all relevant statistics and entered details?
+
+The platform must distinguish between:
+
+Actual recorded marks.
+
+Calculated historical statistics.
+
+Estimated future performance.
+
+Rule-based risk flags.
+
+Study recommendations.
+
+Optional search-based study planning.
+
+These are different functions and must not be presented as interchangeable.
+
+2. TECHNOLOGY AND IMPLEMENTATION RULES
+
+Use the current Google AI Studio application-building environment and the supported project stack.
+
+Preferred frontend:
+
+React.
+
+TypeScript.
+
+Modular, reusable components.
+
+Responsive CSS.
+
+A reliable charting library compatible with the environment.
+
+Use a suitable persistence mechanism. Browser local storage is acceptable for the initial single-user demonstration. If the environment provides a reliable backend, it may be used when necessary, but do not add backend complexity that makes the application harder to run.
+
+Requirements:
+
+All core features must work without paid APIs or mandatory API keys.
+
+Prediction and statistical calculations must run using actual application data.
+
+Do not require a live external AI service for the essential prediction workflow.
+
+Keep business logic and calculation functions separate from presentation components.
+
+Use typed data structures and reusable validation functions.
+
+Avoid unnecessary dependencies.
+
+Do not hardcode dashboard statistics or student-specific predictions.
+
+Do not use fake loading states, fake progress indicators, or success messages that do not correspond to completed actions.
+
+Do not leave placeholder buttons or empty pages pretending to be finished features.
+
+Use consistent formatting, accessible contrast, clear error messages, and helpful empty states.
+
+Preserve saved data after a page refresh when persistence is supported.
+
+Handle malformed data and unexpected empty states without crashing.
+
+If a requested feature cannot be implemented, disclose the limitation and provide a working alternative rather than simulating the feature.
+
+Keep the source code organized, maintainable, and easy for a B.Tech student to explain.
+
+3. VISUAL DESIGN AND APPLICATION NAVIGATION
+
+Design the application as a polished academic analytics product.
+
+Use:
+
+A professional navy, blue, white, and restrained neutral color palette.
+
+Consistent typography, spacing, and alignment.
+
+Readable tables and charts.
+
+Clean navigation.
+
+Clear visual hierarchy.
+
+Responsive layouts.
+
+Meaningful status indicators.
+
+Subtle, restrained animation only where useful.
+
+Accessible form labels and keyboard-friendly controls.
+
+Avoid excessive gradients, oversized decorative elements, unnecessary animations, and clutter.
+
+Create these navigation sections:
+
+Dashboard
+
+Students
+
+Assessments and Marks
+
+Performance Prediction
+
+Topic Analysis
+
+Study Habits and Engagement
+
+Recommendations
+
+Topic Prerequisites
+
+Reports
+
+Data Management
+
+About the Project
+
+Every navigation item must open its corresponding functional page.
+
+The main dashboard must display:
+
+Number of students.
+
+Number of valid assessment records.
+
+Overall average percentage for the selected dataset.
+
+Number of topics flagged for review.
+
+Number of students with sufficient data for prediction.
+
+Recent assessment activity.
+
+Student performance trends.
+
+Topic-wise performance.
+
+A student summary table.
+
+A visible indicator showing whether the displayed data is synthetic, imported, or manually entered.
+
+All dashboard metrics must be derived from the current data. Filters must update the affected metrics, tables, and charts consistently.
+
+4. DATA MODEL AND STUDENT MANAGEMENT
+
+Implement student creation, viewing, editing, searching, filtering, and deletion with confirmation.
+
+Each student record should support:
+
+Unique student ID.
+
+Student name or display name.
+
+Class or programme.
+
+Semester.
+
+Section, if applicable.
+
+Optional enrollment date.
+
+Use fictional identities in sample data.
+
+Prevent duplicate student IDs. Validate required fields. Do not allow deleting a student silently when related assessment records exist. Either explain the consequences and request confirmation or provide a clear cancellation option.
+
+Create organized data structures for:
+
+Students.
+
+Subjects.
+
+Topics.
+
+Assessments.
+
+Assessment attempts.
+
+Study-habit observations.
+
+Engagement records.
+
+Attendance records.
+
+Topic prerequisites.
+
+Prediction results or reproducible prediction inputs.
+
+Recommendations.
+
+Report settings.
+
+Use stable IDs and validate references between records.
+
+Do not store unnecessary sensitive information.
+
+5. MULTIPLE DATA CATEGORIES FOR PERFORMANCE PREDICTION
+
+The platform must support the following categories.
+
+Category A: Academic Performance — Essential
+
+Record:
+
+Previous assessment marks.
+
+Maximum marks.
+
+Normalized percentages.
+
+Subject-wise scores.
+
+Topic-wise scores.
+
+Historical averages.
+
+Recent performance.
+
+Highest and lowest valid percentages.
+
+Chronological performance trends.
+
+Previous prediction versus actual result, when both are available.
+
+Purpose: provide the primary evidence of academic achievement.
+
+Category B: Assessment and Practice Activity — Essential
+
+Record:
+
+Quizzes attempted.
+
+Quizzes completed.
+
+Total questions and correct answers, when available.
+
+Practice activities completed.
+
+Assignment submission status.
+
+Assignment scores.
+
+Repeated attempts.
+
+Changes in performance across attempts.
+
+Calculate completion rates only when their numerator and denominator are available and valid.
+
+Do not confuse the number of assessments with the number of unique quizzes or assignments.
+
+Category C: Study Habits — Optional
+
+Allow students to enter:
+
+Self-reported study hours per week.
+
+Revision frequency.
+
+Practice frequency.
+
+Preparation patterns.
+
+Optional weekly study summaries.
+
+Clearly label self-reported data. Do not assume that more reported study hours always mean better performance.
+
+Category D: Learning Engagement — Optional
+
+Where reliable records exist, support:
+
+Lessons completed.
+
+Learning activities completed.
+
+Learning resources accessed.
+
+Progress through learning material.
+
+Time spent on learning activities, when accurately measured.
+
+Do not interpret opening a learning resource as proof that it was understood.
+
+Category E: Attendance — Optional
+
+Support:
+
+Classes attended.
+
+Total classes held.
+
+Attendance percentage.
+
+Date or period of attendance.
+
+Attendance percentage must be calculated from valid counts.
+
+Missing attendance records must not be treated as absence.
+
+Category F: Topic Mastery and Prerequisites — Recommended
+
+Support:
+
+Topic-wise performance evidence.
+
+Topics needing review.
+
+Topics with sufficient evidence of mastery.
+
+Relationships between topics.
+
+Prerequisite topics.
+
+Dependent topics.
+
+Suggested revision order.
+
+Do not infer mastery merely because a topic has not been assessed.
+
+Category G: Assessment Context — Optional
+
+Allow recording:
+
+Assessment date.
+
+Assessment type.
+
+Subject and topic.
+
+Maximum marks.
+
+Attempt number.
+
+Optional assessment difficulty label, if deliberately supplied and consistently defined.
+
+Do not invent difficulty ratings or assume that scores from different assessment types are directly comparable without appropriate normalization.
+
+Data availability rules
+
+Not every student will have all categories.
+
+The application must work when only academic marks are available. Additional categories must be optional.
+
+For every analysis, distinguish:
+
+Genuine zero.
+
+Missing value.
+
+Unattempted assessment.
+
+Not applicable.
+
+Category not supplied.
+
+Insufficient data.
+
+Never silently replace missing values with zero.
+
+Show which categories were available and actually used in each prediction.
+
+Do not penalize students merely because optional data is missing.
+
+6. ASSESSMENT RECORD MANAGEMENT
+
+Allow users to add, edit, view, and delete assessments.
+
+Each assessment record should include:
+
+Student.
+
+Subject.
+
+Topic.
+
+Assessment name.
+
+Assessment type.
+
+Date.
+
+Obtained marks.
+
+Maximum marks.
+
+Attempt number, where applicable.
+
+Validate:
+
+Obtained marks must be greater than or equal to zero.
+
+Maximum marks must be greater than zero.
+
+Obtained marks must not exceed maximum marks.
+
+Dates must be valid.
+
+Student, subject, and topic references must exist.
+
+Imported records must satisfy the same rules as manually entered records.
+
+Calculate:
+
+percentage = (obtained marks / maximum marks) × 100
+
+Preserve the original marks and maximum marks.
+
+If an assessment has not been attempted, store that status separately from a recorded zero.
+
+Handle duplicate records consistently. Warn users about likely duplicates and provide a clear decision rather than silently duplicating or deleting data.
+
+7. THE PREDICTION ENGINE — REAL, EXPLAINABLE, AND TESTABLE
+
+Implement an actual prediction calculation using current student records.
+
+Do not simply assign arbitrary marks to a student or return a hardcoded prediction.
+
+Primary prediction target
+
+The default prediction target is the student's estimated percentage on the next assessment for a selected subject or topic.
+
+Clearly state that the estimate concerns the selected subject/topic and assessment context. Do not present it as a guaranteed final examination result or a universal prediction of the student's future.
+
+Recommended initial model
+
+Use a transparent baseline based primarily on chronological historical assessment percentages.
+
+A suitable approach is a weighted recent-score baseline with an optional capped trend adjustment, or a clearly implemented regression model.
+
+Choose one primary method and document it.
+
+For a weighted recent-score baseline:
+
+Select valid historical assessments for the student and target topic.
+
+Normalize each assessment to a percentage.
+
+Sort records chronologically.
+
+Assign documented weights that give more importance to recent assessments.
+
+Calculate the weighted historical baseline.
+
+If enough distinct chronological observations exist, estimate the trend.
+
+Apply only a documented, capped trend adjustment.
+
+Clamp the final estimate to the valid range of 0–100%.
+
+Display the number of records used and explain the method.
+
+Handle equal dates, missing records, outliers, and insufficient history safely.
+
+Do not let the most recent score alone determine the prediction unless the selected method explicitly defines that behavior.
+
+Minimum data requirements
+
+Zero valid attempts: prediction unavailable.
+
+One valid attempt: display the actual score and historical summary, but mark the next-score prediction as insufficiently supported or preliminary.
+
+Too few distinct chronological observations: do not claim a reliable trend.
+
+Missing optional categories: continue with the available valid data.
+
+Invalid records: exclude them from calculations and explain the exclusion.
+
+If a model cannot produce a defensible estimate, show why rather than fabricating one.
+
+Using multiple categories
+
+Academic marks are the primary prediction evidence.
+
+Study habits, practice activity, engagement, attendance, and prerequisite mastery may be considered additional predictive features only when the selected model has a defensible way to use them.
+
+Do not combine marks, attendance percentages, and study hours through arbitrary addition.
+
+Do not invent feature weights and describe them as scientifically validated.
+
+If you implement a multi-factor heuristic, label it as a heuristic estimate. Do not call it a trained machine-learning model.
+
+If you implement regression or another machine-learning model, use a proper training process and evaluation strategy, and disclose its limitations.
+
+For a trained model:
+
+Define the target variable.
+
+Define input features.
+
+Prevent target leakage.
+
+Separate training and evaluation data.
+
+Use a split strategy appropriate for chronological educational records.
+
+Consider whether records from the same student should be grouped to avoid unrealistic evaluation.
+
+Compare with a simple baseline.
+
+Calculate actual evaluation metrics from held-out data.
+
+Never invent accuracy or validation results.
+
+If insufficient labeled data exists, retain the explainable baseline rather than fabricating training results.
+
+Prediction output
+
+For each eligible prediction, display:
+
+Estimated next score percentage.
+
+Historical average.
+
+Most recent actual score.
+
+Number of attempts used.
+
+Trend direction, if supported.
+
+Method used.
+
+Available categories used.
+
+Explanation of contributing evidence.
+
+Data-sufficiency label.
+
+Limitations.
+
+Use labels such as:
+
+Insufficient data.
+
+Preliminary estimate.
+
+Limited historical evidence.
+
+Estimate based on available records.
+
+Do not invent numerical confidence percentages.
+
+Clearly distinguish the prediction from an actual score in every view and report.
+
+8. TOPIC RISK ANALYSIS
+
+Implement transparent, configurable topic-review rules.
+
+For example, a topic may be flagged if its selected performance summary falls below a configurable threshold.
+
+A declining trend may be shown as an additional warning only when sufficient chronological evidence exists.
+
+Use labels such as:
+
+Needs attention.
+
+Developing.
+
+On track.
+
+Insufficient data.
+
+Document the calculation and thresholds.
+
+Show the reason for every flag, such as:
+
+“This topic is flagged because its calculated average is below the configured review threshold.”
+
+Do not call a student weak, unintelligent, or unsuccessful.
+
+A risk flag is a learning-support indicator, not a diagnosis or judgment.
+
+If no assessment data exists for a topic, show “Insufficient data” rather than “Needs attention.”
+
+9. STATISTICS AND DATA VISUALIZATION
+
+Create real, data-driven charts and tables.
+
+Include:
+
+Mean percentage.
+
+Median percentage.
+
+Highest and lowest valid scores.
+
+Most recent score.
+
+Number of valid attempts.
+
+Subject-wise performance.
+
+Topic-wise performance.
+
+Chronological score trends.
+
+Assessment completion rate where available.
+
+Practice completion rate where available.
+
+Attendance statistics where available.
+
+Actual historical scores versus predictions, when a prediction exists.
+
+Define each statistic clearly.
+
+Do not mix scores with different maximum marks without normalization.
+
+For aggregate student averages, use a documented method. Avoid silently allowing students with more assessment records to dominate a comparison if the intended statistic is a student-level average.
+
+Charts must:
+
+Use actual values.
+
+Have readable labels and titles.
+
+Update when the underlying data changes.
+
+Respect current filters.
+
+Distinguish actual and predicted values.
+
+Show empty states when data is insufficient.
+
+Avoid misleading axes and unsupported trend lines.
+
+Do not show fabricated values to make charts appear complete.
+
+10. STUDY RECOMMENDATIONS
+
+Generate practical recommendations from actual performance evidence and documented rules.
+
+Examples:
+
+Review a topic whose summary is below the configured threshold.
+
+Practice additional questions when repeated assessment evidence shows difficulty.
+
+Review a prerequisite topic when a dependent topic is difficult and the prerequisite relationship is explicitly configured.
+
+Continue practicing when recent performance is improving but evidence remains limited.
+
+Collect more assessment data when no defensible prediction is possible.
+
+Each recommendation must show:
+
+Recommended action.
+
+Related subject/topic.
+
+Reason.
+
+Supporting data or rule.
+
+Optional completion status.
+
+Allow recommendations to be marked completed or dismissed.
+
+Do not promise a particular increase in marks.
+
+Do not create unrelated generic recommendations for every student.
+
+11. TOPIC PREREQUISITES AND SEARCH ALGORITHMS
+
+Create an interactive topic-prerequisite structure.
+
+Allow topics to have prerequisite topics.
+
+Display relationships using a graph or a clear interactive list.
+
+Validate references and detect cycles. If cycles exist, explain why prerequisite-based planning may be invalid until they are resolved.
+
+BFS and DFS
+
+Implement BFS or DFS only for a meaningful operation, such as finding reachable prerequisite topics or traversing the topic graph.
+
+If implemented:
+
+Show the graph or relevant structure.
+
+Display the traversal order.
+
+Explain the algorithm.
+
+Provide a small test graph with a hand-checkable result.
+
+A* search
+
+A* is optional. Include it only if a study-sequence planning feature is implemented.
+
+Define:
+
+Search state.
+
+Legal actions.
+
+Goal condition.
+
+Action cost.
+
+Heuristic.
+
+Termination condition.
+
+Use compatible units for g(n) and h(n). If cost is measured in study minutes, the heuristic must estimate remaining study minutes.
+
+Do not add minutes directly to marks or percentages.
+
+Do not claim optimality unless the algorithm's assumptions are satisfied.
+
+Constraint satisfaction problem
+
+CSP is optional. Use it only if the application genuinely schedules study sessions with variables, domains, and constraints.
+
+Other algorithms
+
+Do not add Minimax or alpha-beta pruning to the student-performance prediction workflow because these are designed for adversarial game search.
+
+Do not add AO* simply to display another syllabus algorithm. Use it only if the application contains a genuine AND-OR planning problem.
+
+Do not add the Expert System module. It is explicitly excluded from this project.
+
+Classic water-jug, queens, travelling-salesperson, missionaries-and-cannibals, and tile problems should not appear as platform features unless a genuine project requirement is established.
+
+Keep the core focus on student performance analysis and prediction.
+
+12. PROFESSIONAL PERFORMANCE PREDICTION REPORT — MANDATORY FEATURE
+
+Implement a dedicated, fully functional “Generate Performance Report” button.
+
+This is a core requirement. It must not be decorative.
+
+Place the button on:
+
+Dashboard.
+
+Individual student page.
+
+Performance Prediction page.
+
+Reports page.
+
+Use a clear label and appropriate document/print icon.
+
+When clicked, open a dedicated report preview with:
+
+Print Report.
+
+Download as PDF, if implemented with a real PDF-generation mechanism.
+
+Back to Dashboard.
+
+The report must use actual application data and respect the selected student, subject, topic, and date range.
+
+Report title and identity
+
+Use the exact report title:
+
+STUDENT PERFORMANCE PREDICTION REPORT
+
+Include:
+
+Project name: Student Performance Prediction Platform.
+
+Student name and ID.
+
+Class, semester, or section if available.
+
+Subject/topic scope.
+
+Report generation date.
+
+Selected date range if applicable.
+
+Data source: synthetic, imported, or manually entered.
+
+Never invent missing student details.
+
+Report section A: Executive summary
+
+Display:
+
+Overall average percentage.
+
+Number of valid assessment records.
+
+Subjects and topics represented.
+
+Topics flagged for review.
+
+Predicted next score, if supported.
+
+Data-sufficiency status.
+
+Separate actual historical statistics from estimated future results.
+
+Report section B: Student details
+
+Include a clean student-information table containing available entered details.
+
+Report section C: Assessment history
+
+Include:
+
+Date.
+
+Subject.
+
+Topic.
+
+Assessment name/type.
+
+Obtained marks.
+
+Maximum marks.
+
+Percentage.
+
+Attempt number where applicable.
+
+If the report is described as complete, do not silently omit records.
+
+For large datasets, use multiple pages or a clearly documented pagination strategy.
+
+Report section D: Statistical analysis
+
+Include relevant calculated metrics:
+
+Mean.
+
+Median.
+
+Highest and lowest valid percentages.
+
+Most recent valid score.
+
+Number of valid attempts.
+
+Topic-wise averages.
+
+Chronological trend where supported.
+
+Available practice, engagement, study-habit, and attendance statistics.
+
+Use only metrics appropriate to the available data.
+
+Explain missing or excluded values when relevant.
+
+Report section E: Prediction and interpretation
+
+Display:
+
+Estimated next score.
+
+Historical average.
+
+Most recent actual score.
+
+Trend, if supported.
+
+Number of attempts used.
+
+Prediction method.
+
+Features/categories actually used.
+
+Data limitations.
+
+Explanation of the result.
+
+If prediction is unavailable, show “Prediction unavailable — insufficient data” and explain why.
+
+Never display an invented accuracy or confidence percentage.
+
+Report section F: Charts
+
+Include:
+
+Historical score trend.
+
+Topic-wise performance.
+
+Actual versus predicted comparison, when valid.
+
+Category-level comparisons where relevant data exists.
+
+Charts must be generated from the same underlying data used by the dashboard.
+
+Use readable titles, axes, legends, and values.
+
+Clearly label estimated values.
+
+Do not draw predictions as observed historical results.
+
+Report section G: Topic analysis and recommendations
+
+Include a topic table with:
+
+Topic.
+
+Number of attempts.
+
+Average percentage.
+
+Most recent score.
+
+Trend if supported.
+
+Status.
+
+Reason.
+
+Recommended action.
+
+Include evidence-based recommendations and prerequisite guidance where applicable.
+
+Report section H: Limitations
+
+Briefly explain:
+
+Data sufficiency.
+
+Prediction method.
+
+Whether a trained model was used.
+
+Any missing categories.
+
+Why estimates are not guarantees.
+
+Print layout
+
+Create a dedicated print stylesheet and report component. Do not print the ordinary application interface.
+
+Requirements:
+
+A4 paper, portrait by default.
+
+White background.
+
+Dark, readable text.
+
+Professional navy/blue accents where printable.
+
+Consistent margins.
+
+No clipped tables or overlapping text.
+
+No navigation, sidebar, buttons, or application controls in the printed pages.
+
+Readable charts in color and grayscale.
+
+Sensible page breaks.
+
+Repeated table headers where supported.
+
+Page numbers and compact report headers where feasible.
+
+No unnecessary blank pages.
+
+No cut-off chart labels.
+
+All sections readable when saved as PDF.
+
+Use the browser's native print workflow with a dedicated print view and print CSS.
+
+The Print Report action should call the real print workflow, such as window.print().
+
+If direct PDF download is supported, implement and test it. Do not create a button that pretends to download a file.
+
+If direct PDF generation is unavailable, provide a working “Print / Save as PDF” workflow.
+
+Report integrity and privacy
+
+Before generating a report, verify that all displayed values belong to the selected student and filters.
+
+Never mix records from different students in an individual report.
+
+Do not expose other students' identifiable information.
+
+If there are no valid records, display a useful message instead of fabricating statistics.
+
+After generating a report, users must be able to return to the application without losing entered data.
+
+13. DATA IMPORT AND EXPORT
+
+Implement:
+
+CSV import for student and assessment records.
+
+CSV export for student and assessment records.
+
+Export of topic summaries and prediction results.
+
+A documented CSV template.
+
+Clear import validation messages.
+
+Sample-data loading.
+
+Sample-data reset with confirmation.
+
+Show the row number and reason when possible for invalid CSV rows.
+
+Validate imported references, marks, dates, and required fields before accepting records.
+
+Do not silently corrupt valid records when some rows are invalid.
+
+Show whether the current dataset contains synthetic, imported, or manually entered data.
+
+Do not represent synthetic records as real institutional data.
+
+14. SAMPLE DATA FOR DEMONSTRATION
+
+Provide a clearly labelled synthetic dataset containing:
+
+At least 8 fictional students.
+
+At least 5 academic topics.
+
+At least 2 subjects.
+
+Multiple assessment attempts for selected topics.
+
+Improving performance.
+
+Declining performance.
+
+Stable performance.
+
+Insufficient-data cases.
+
+At least one genuine zero score.
+
+At least one topic without attempts.
+
+Optional study-habit, practice, engagement, and attendance records.
+
+A meaningful prerequisite graph.
+
+All marks must respect the corresponding maximum marks.
+
+Generate all dashboard statistics, predictions, charts, risk flags, recommendations, and reports dynamically from these records.
+
+Provide:
+
+Load Sample Data.
+
+Reset Sample Data.
+
+Clear confirmation and status messages.
+
+Ensure that the sample data is sufficient to demonstrate the prediction workflow and the professional report button.
+
+Clearly identify all sample data as synthetic.
+
+15. ABOUT THE PROJECT PAGE
+
+Create a professional academic project explanation page containing:
+
+Project title.
+
+Problem statement.
+
+Objectives.
+
+Proposed system architecture.
+
+Input-process-output flow.
+
+Data categories.
+
+Prediction methodology.
+
+Statistical analysis.
+
+Risk rules.
+
+Topic prerequisites.
+
+Search algorithm, only if implemented.
+
+Data storage approach.
+
+Testing approach.
+
+Limitations.
+
+Future improvements.
+
+Include this architecture:
+
+Student and assessment records
+→ Data validation
+→ Feature calculation
+→ Performance analysis
+→ Prediction and risk rules
+→ Study recommendations
+→ Dashboard and printable report.
+
+Explain which components use statistics, which use rules, and which use search algorithms.
+
+Do not describe every component as machine learning.
+
+Do not claim that a trained model exists unless it is actually implemented.
+
+Do not fabricate references, research findings, faculty feedback, or evaluation metrics.
+
+16. TESTING REQUIREMENTS
+
+Implement and verify the following cases before considering the project complete.
+
+Student and assessment management
+
+Add a student.
+
+Edit student details.
+
+Search for a student.
+
+Delete a student with confirmation.
+
+Add, edit, and delete an assessment.
+
+Verify that dashboard statistics update after each operation.
+
+Verify that data persists after refresh when using local storage.
+
+Data validation
+
+Reject negative marks.
+
+Reject marks greater than maximum marks.
+
+Reject maximum marks equal to zero.
+
+Distinguish zero marks from missing marks.
+
+Handle an assessment that has not been attempted.
+
+Handle invalid dates.
+
+Handle duplicate IDs.
+
+Handle malformed CSV files.
+
+Handle invalid student/topic references.
+
+Handle empty datasets.
+
+Prediction and statistics
+
+Verify percentage calculations manually.
+
+Verify mean and median calculations.
+
+Test one attempt.
+
+Test multiple attempts.
+
+Test improving scores.
+
+Test declining scores.
+
+Test stable scores.
+
+Test equal assessment dates.
+
+Test missing optional categories.
+
+Confirm that predictions update after marks change.
+
+Confirm that unsupported predictions show insufficient data.
+
+Verify that no prediction exceeds 100% or falls below 0%.
+
+Verify that the prediction explanation matches the implemented method.
+
+Confirm that no fabricated accuracy or confidence metric appears.
+
+Charts and recommendations
+
+Verify that charts reflect actual data.
+
+Verify that filters update charts and tables.
+
+Verify that risk flags follow the configured rules.
+
+Verify that each recommendation has a traceable reason.
+
+Verify that topics without data are not automatically flagged as poor.
+
+Search and prerequisites
+
+Test invalid prerequisite references.
+
+Test cycle detection.
+
+Verify BFS/DFS results if traversal is implemented.
+
+Verify A* results against a small hand-checked graph if A* is implemented.
+
+Reports
+
+Generate a report for a student with multiple assessments.
+
+Generate a report with insufficient data.
+
+Change the selected student and verify report isolation.
+
+Change marks and verify report updates.
+
+Verify report statistics manually.
+
+Verify that report charts match dashboard data.
+
+Open the print dialog.
+
+Save the report as PDF through the print workflow.
+
+Inspect page breaks, margins, tables, charts, and text.
+
+Test a large report spanning multiple pages.
+
+Confirm that the report does not print navigation or dashboard controls.
+
+Confirm that returning from report preview does not lose application data.
+
+Final application checks
+
+Check every navigation link.
+
+Check every primary button.
+
+Check for console errors.
+
+Check for runtime errors.
+
+Check for TypeScript and build errors.
+
+Check for layout overflow.
+
+Check empty states.
+
+Confirm that no feature is falsely presented as complete.
+
+Fix discovered errors before claiming completion.
+
+If any test cannot be executed in the environment, disclose it as unverified rather than claiming it passed.
+
+17. IMPLEMENTATION PRIORITIES
+
+Build the project in this order:
+
+Phase 1 — Working core
+
+Application layout and navigation.
+
+Student management.
+
+Assessment management.
+
+Data validation.
+
+Persistence.
+
+Dashboard statistics.
+
+Phase 2 — Analysis
+
+Multiple data categories.
+
+Topic summaries.
+
+Historical trends.
+
+Explainable baseline prediction.
+
+Data-sufficiency handling.
+
+Risk flags.
+
+Phase 3 — Recommendations and AI concepts
+
+Study recommendations.
+
+Topic prerequisites.
+
+BFS/DFS if useful.
+
+Optional A* planner only if properly defined.
+
+Phase 4 — Reporting
+
+Dedicated report preview.
+
+Statistical tables.
+
+Charts.
+
+Recommendations.
+
+Print stylesheet.
+
+Print-to-PDF workflow.
+
+Direct PDF download if genuinely implemented.
+
+Phase 5 — Quality assurance
+
+Run the application.
+
+Execute the test cases.
+
+Fix errors.
+
+Verify calculations.
+
+Verify print output.
+
+Review the complete user workflow.
+
+Do not sacrifice a working core feature merely to add another algorithm or visual component.
+
+18. FINAL ACCEPTANCE CRITERIA
+
+The project is ready for demonstration only when:
+
+The application launches successfully.
+
+The interface is professional and responsive.
+
+Users can add and manage students and assessments.
+
+The application handles multiple performance categories.
+
+The core prediction uses actual data and a documented method.
+
+Insufficient data is handled honestly.
+
+Statistics and charts update when data changes.
+
+Recommendations are generated from evidence or documented rules.
+
+The topic-prerequisite component works if included.
+
+Sample data can be loaded and reset.
+
+Import/export functions work if shown as implemented.
+
+The Generate Performance Report button produces a real, data-driven report.
+
+The report can be previewed and printed or saved as PDF.
+
+The report contains the entered details, calculated statistics, predictions, charts, and recommendations.
+
+Printed pages are readable and properly formatted.
+
+No fabricated data, metrics, or success messages are present.
+
+Major workflows have been tested.
+
+The source code is available in the project.
+
+Any unverified feature or limitation is explicitly disclosed.
+
+When finished, provide:
+
+The working application in the available preview.
+
+The complete project source.
+
+A concise architecture explanation.
+
+The exact prediction formula used.
+
+Instructions for demonstrating the application.
+
+A list of tests actually performed and their results.
+
+Any remaining limitations.
+
+Begin implementation now. Do not respond with only a plan or another prompt. Build, run, inspect, test, and fix the application in the available environment.
