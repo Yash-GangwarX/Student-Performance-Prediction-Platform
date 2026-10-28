@@ -2116,5 +2116,1356 @@ export const TOPIC_QUESTIONS: Record<string, QuizQuestion[]> = {
       explanation: 'Residual skip connections let gradients flow directly backwards through the network without degradation.',
       difficulty: 'Standard'
     }
+  ],
+
+  // ==========================================
+  // TOPIC-MATH-01: Propositional Logic & Truth Tables (20 Questions)
+  // ==========================================
+  'TOPIC-MATH-01': [
+    {
+      id: 'MATH-01-01',
+      topicId: 'TOPIC-MATH-01',
+      questionText: 'Which of the following is a Proposition (a statement that is either strictly True or False)?',
+      options: ['"5 is greater than 3"', '"What time is it?"', '"Please close the door"', '"x + 2 = 7"'],
+      correctIndex: 0,
+      explanation: '"5 is greater than 3" is a declarative statement that is unambiguously True.',
+      difficulty: 'Introductory'
+    },
+    {
+      id: 'MATH-01-02',
+      topicId: 'TOPIC-MATH-01',
+      questionText: 'When is a Conjunction (p ∧ q) True in propositional logic?',
+      options: ['Only when both p and q are True', 'When at least one is True', 'Only when both are False', 'Never True'],
+      correctIndex: 0,
+      explanation: 'Conjunction (AND) is True only when both component propositions are True.',
+      difficulty: 'Introductory'
+    },
+    {
+      id: 'MATH-01-03',
+      topicId: 'TOPIC-MATH-01',
+      questionText: 'When is a Disjunction (p ∨ q) False?',
+      options: ['Only when both p and q are False', 'When both are True', 'When p is True and q is False', 'Never False'],
+      correctIndex: 0,
+      explanation: 'Disjunction (OR) is False only when both propositions are False.',
+      difficulty: 'Introductory'
+    },
+    {
+      id: 'MATH-01-04',
+      topicId: 'TOPIC-MATH-01',
+      questionText: 'What is the truth value of the Conditional statement (p → q) when p is False and q is False?',
+      options: ['True (vacuously true)', 'False', 'Undefined', 'Contradictory'],
+      correctIndex: 0,
+      explanation: 'An implication (p → q) is always True when the hypothesis p is False.',
+      difficulty: 'Introductory'
+    },
+    {
+      id: 'MATH-01-05',
+      topicId: 'TOPIC-MATH-01',
+      questionText: 'What is a proposition called that is True for all possible truth values of its variables?',
+      options: ['Tautology', 'Contradiction', 'Contingency', 'Fallacy'],
+      correctIndex: 0,
+      explanation: 'A compound proposition that is always True is called a Tautology (e.g. p ∨ ¬p).',
+      difficulty: 'Introductory'
+    },
+    {
+      id: 'MATH-01-06',
+      topicId: 'TOPIC-MATH-01',
+      questionText: 'What is the Contrapositive of the conditional statement "If p, then q" (p → q)?',
+      options: ['¬q → ¬p', 'q → p', '¬p → ¬q', 'p ∧ ¬q'],
+      correctIndex: 0,
+      explanation: 'The contrapositive of p → q is ¬q → ¬p, and it is logically equivalent to the original statement.',
+      difficulty: 'Introductory'
+    },
+    {
+      id: 'MATH-01-07',
+      topicId: 'TOPIC-MATH-01',
+      questionText: 'According to De Morgan\'s Law, what is ¬(p ∧ q) logically equivalent to?',
+      options: ['¬p ∨ ¬q', '¬p ∧ ¬q', 'p ∨ q', '¬p → q'],
+      correctIndex: 0,
+      explanation: 'De Morgan\'s Law states ¬(p ∧ q) ≡ ¬p ∨ ¬q.',
+      difficulty: 'Introductory'
+    },
+    {
+      id: 'MATH-01-08',
+      topicId: 'TOPIC-MATH-01',
+      questionText: 'What is the truth table size (number of rows) for a compound proposition with 3 distinct variables (p, q, r)?',
+      options: ['8 rows (2³)', '6 rows', '9 rows', '4 rows'],
+      correctIndex: 0,
+      explanation: 'Each variable has 2 possible values (T/F), so n variables require 2ⁿ = 2³ = 8 rows.',
+      difficulty: 'Introductory'
+    },
+    {
+      id: 'MATH-01-09',
+      topicId: 'TOPIC-MATH-01',
+      questionText: 'What is the negation of "All CSE students pass the midterm"?',
+      options: [
+        'There exists at least one CSE student who did not pass',
+        'No CSE students pass the midterm',
+        'All CSE students fail the midterm',
+        'Some CSE students pass'
+      ],
+      correctIndex: 0,
+      explanation: '¬(∀x P(x)) ≡ ∃x ¬P(x). The negation of "for all" is "there exists at least one that does not".',
+      difficulty: 'Standard'
+    },
+    {
+      id: 'MATH-01-10',
+      topicId: 'TOPIC-MATH-01',
+      questionText: 'When is the Biconditional statement (p ↔ q) True?',
+      options: [
+        'When p and q have identical truth values (both True or both False)',
+        'Only when p is True',
+        'Only when q is True',
+        'When p and q have opposite truth values'
+      ],
+      correctIndex: 0,
+      explanation: 'The biconditional (p ↔ q) is True whenever p and q agree in truth value.',
+      difficulty: 'Introductory'
+    },
+    {
+      id: 'MATH-01-11',
+      topicId: 'TOPIC-MATH-01',
+      questionText: 'What is the converse of "If it rains, then the ground is wet"?',
+      options: [
+        'If the ground is wet, then it rains',
+        'If it does not rain, then the ground is not wet',
+        'If the ground is not wet, then it does not rain',
+        'It rains and the ground is dry'
+      ],
+      correctIndex: 0,
+      explanation: 'The converse of p → q is q → p.',
+      difficulty: 'Introductory'
+    },
+    {
+      id: 'MATH-01-12',
+      topicId: 'TOPIC-MATH-01',
+      questionText: 'What is the logical rule of inference known as Modus Ponens?',
+      options: [
+        'From p and (p → q), deduce q',
+        'From q and (p → q), deduce p',
+        'From ¬p, deduce ¬q',
+        'From (p ∨ q), deduce p'
+      ],
+      correctIndex: 0,
+      explanation: 'Modus Ponens affirms the antecedent: [p ∧ (p → q)] ⊢ q.',
+      difficulty: 'Standard'
+    },
+    {
+      id: 'MATH-01-13',
+      topicId: 'TOPIC-MATH-01',
+      questionText: 'What is the logical rule Modus Tollens?',
+      options: [
+        'From ¬q and (p → q), deduce ¬p',
+        'From ¬p and (p → q), deduce ¬q',
+        'From p and q, deduce p ∨ q',
+        'From q, deduce p'
+      ],
+      correctIndex: 0,
+      explanation: 'Modus Tollens denies the consequent: [¬q ∧ (p → q)] ⊢ ¬p.',
+      difficulty: 'Standard'
+    },
+    {
+      id: 'MATH-01-14',
+      topicId: 'TOPIC-MATH-01',
+      questionText: 'Which property is represented by p ∧ (q ∨ r) ≡ (p ∧ q) ∨ (p ∧ r)?',
+      options: ['Distributive Law', 'Associative Law', 'Commutative Law', 'Idempotent Law'],
+      correctIndex: 0,
+      explanation: 'This illustrates the distributive law of conjunction over disjunction.',
+      difficulty: 'Introductory'
+    },
+    {
+      id: 'MATH-01-15',
+      topicId: 'TOPIC-MATH-01',
+      questionText: 'What is a proposition that is False under every truth assignment called?',
+      options: ['Contradiction', 'Tautology', 'Contingency', 'Theorem'],
+      correctIndex: 0,
+      explanation: 'A contradiction is always False (e.g. p ∧ ¬p).',
+      difficulty: 'Introductory'
+    },
+    {
+      id: 'MATH-01-16',
+      topicId: 'TOPIC-MATH-01',
+      questionText: 'What does the Universal Quantifier symbol (∀) denote?',
+      options: ['"For all" / "For every"', '"There exists"', '"Such that"', '"Element of"'],
+      correctIndex: 0,
+      explanation: '∀ is the universal quantifier meaning "for all" or "for every".',
+      difficulty: 'Introductory'
+    },
+    {
+      id: 'MATH-01-17',
+      topicId: 'TOPIC-MATH-01',
+      questionText: 'What does the Existential Quantifier symbol (∃) denote?',
+      options: ['"There exists at least one"', '"For all"', '"If and only if"', '"Equivalent"'],
+      correctIndex: 0,
+      explanation: '∃ denotes "there exists at least one element".',
+      difficulty: 'Introductory'
+    },
+    {
+      id: 'MATH-01-18',
+      topicId: 'TOPIC-MATH-01',
+      questionText: 'What is the simplified form of (p ∧ True)?',
+      options: ['p', 'True', 'False', '¬p'],
+      correctIndex: 0,
+      explanation: 'By the Identity Law, p ∧ True ≡ p.',
+      difficulty: 'Introductory'
+    },
+    {
+      id: 'MATH-01-19',
+      topicId: 'TOPIC-MATH-01',
+      questionText: 'What is the simplified form of (p ∨ True)?',
+      options: ['True (Domination Law)', 'p', 'False', '¬p'],
+      correctIndex: 0,
+      explanation: 'By the Domination Law, any proposition OR True is always True.',
+      difficulty: 'Introductory'
+    },
+    {
+      id: 'MATH-01-20',
+      topicId: 'TOPIC-MATH-01',
+      questionText: 'What is the law that states ¬(¬p) ≡ p?',
+      options: ['Double Negation Law', 'De Morgan\'s Law', 'Absorption Law', 'Idempotent Law'],
+      correctIndex: 0,
+      explanation: 'Negating a negation returns the original proposition: ¬(¬p) ≡ p.',
+      difficulty: 'Introductory'
+    }
+  ],
+
+  // ==========================================
+  // TOPIC-MATH-02: Sets, Relations & Functions (20 Questions)
+  // ==========================================
+  'TOPIC-MATH-02': [
+    {
+      id: 'MATH-02-01',
+      topicId: 'TOPIC-MATH-02',
+      questionText: 'What is the cardinality of the Power Set P(A) for a set A with 3 elements?',
+      options: ['8 (2³)', '6', '3', '9'],
+      correctIndex: 0,
+      explanation: 'The power set contains 2ⁿ subsets, so 2³ = 8.',
+      difficulty: 'Introductory'
+    },
+    {
+      id: 'MATH-02-02',
+      topicId: 'TOPIC-MATH-02',
+      questionText: 'What is an Empty Set (∅)?',
+      options: ['A set containing zero elements', 'A set containing the number 0', 'A set with undefined size', 'A universal set'],
+      correctIndex: 0,
+      explanation: 'The empty set ∅ contains no elements; its cardinality |∅| = 0.',
+      difficulty: 'Introductory'
+    },
+    {
+      id: 'MATH-02-03',
+      topicId: 'TOPIC-MATH-02',
+      questionText: 'What is the Cartesian Product A × B for sets A = {1, 2} and B = {a, b}?',
+      options: ['{(1, a), (1, b), (2, a), (2, b)}', '{1, 2, a, b}', '{(1, 2), (a, b)}', '4'],
+      correctIndex: 0,
+      explanation: 'A × B is the set of all ordered pairs (a, b) where a ∈ A and b ∈ B.',
+      difficulty: 'Introductory'
+    },
+    {
+      id: 'MATH-02-04',
+      topicId: 'TOPIC-MATH-02',
+      questionText: 'When is a relation R on set A called Reflexive?',
+      options: ['When (a, a) ∈ R for every element a ∈ A', 'When (a, b) ∈ R implies (b, a) ∈ R', 'When (a, b) and (b, c) imply (a, c)', 'When R is empty'],
+      correctIndex: 0,
+      explanation: 'Reflexivity requires every element to be related to itself: ∀a ∈ A, (a, a) ∈ R.',
+      difficulty: 'Introductory'
+    },
+    {
+      id: 'MATH-02-05',
+      topicId: 'TOPIC-MATH-02',
+      questionText: 'When is a relation R Symmetric?',
+      options: ['If (a, b) ∈ R, then (b, a) ∈ R for all a, b', 'If (a, a) ∈ R', 'If (a, b) ∈ R and (b, c) ∈ R then (a, c) ∈ R', 'If R has no elements'],
+      correctIndex: 0,
+      explanation: 'Symmetry means if a is related to b, then b is related to a.',
+      difficulty: 'Introductory'
+    },
+    {
+      id: 'MATH-02-06',
+      topicId: 'TOPIC-MATH-02',
+      questionText: 'What three properties define an Equivalence Relation?',
+      options: ['Reflexive, Symmetric, and Transitive', 'Reflexive, Antisymmetric, and Transitive', 'Symmetric and Irreflexive', 'Injective, Surjective, and Bijective'],
+      correctIndex: 0,
+      explanation: 'An equivalence relation must be Reflexive, Symmetric, and Transitive.',
+      difficulty: 'Introductory'
+    },
+    {
+      id: 'MATH-02-07',
+      topicId: 'TOPIC-MATH-02',
+      questionText: 'What three properties define a Partial Ordering Relation (POSET)?',
+      options: ['Reflexive, Antisymmetric, and Transitive', 'Reflexive, Symmetric, and Transitive', 'Irreflexive and Symmetric', 'Asymmetric only'],
+      correctIndex: 0,
+      explanation: 'A partial ordering is Reflexive, Antisymmetric, and Transitive.',
+      difficulty: 'Introductory'
+    },
+    {
+      id: 'MATH-02-08',
+      topicId: 'TOPIC-MATH-02',
+      questionText: 'What is an Injective (One-to-One) function f: A → B?',
+      options: ['Different inputs in A map to different outputs in B (f(x) = f(y) ⇒ x = y)', 'Every element in B is mapped to', 'Both one-to-one and onto', 'A constant function'],
+      correctIndex: 0,
+      explanation: 'An injective function never maps two distinct domain elements to the same codomain element.',
+      difficulty: 'Introductory'
+    },
+    {
+      id: 'MATH-02-09',
+      topicId: 'TOPIC-MATH-02',
+      questionText: 'What is a Surjective (Onto) function f: A → B?',
+      options: ['Every element in codomain B is the image of at least one element in domain A (Range = Codomain)', 'Every input maps to a distinct output', 'Only 1 element in B is used', 'f is not defined on all elements'],
+      correctIndex: 0,
+      explanation: 'A surjective function covers the entire codomain B.',
+      difficulty: 'Introductory'
+    },
+    {
+      id: 'MATH-02-10',
+      topicId: 'TOPIC-MATH-02',
+      questionText: 'What is a Bijective function?',
+      options: ['Both Injective (one-to-one) and Surjective (onto)', 'Only injective', 'Only surjective', 'Neither injective nor surjective'],
+      correctIndex: 0,
+      explanation: 'A bijection is both one-to-one and onto, meaning it possesses a unique inverse function.',
+      difficulty: 'Introductory'
+    },
+    {
+      id: 'MATH-02-11',
+      topicId: 'TOPIC-MATH-02',
+      questionText: 'What is the union of sets A = {1, 2} and B = {2, 3}?',
+      options: ['{1, 2, 3}', '{2}', '{1, 3}', '{1, 2, 2, 3}'],
+      correctIndex: 0,
+      explanation: 'A ∪ B contains all distinct elements in A or B: {1, 2, 3}.',
+      difficulty: 'Introductory'
+    },
+    {
+      id: 'MATH-02-12',
+      topicId: 'TOPIC-MATH-02',
+      questionText: 'What is the intersection of sets A = {1, 2, 3} and B = {2, 3, 4}?',
+      options: ['{2, 3}', '{1, 4}', '{1, 2, 3, 4}', '∅'],
+      correctIndex: 0,
+      explanation: 'A ∩ B contains elements present in both sets: {2, 3}.',
+      difficulty: 'Introductory'
+    },
+    {
+      id: 'MATH-02-13',
+      topicId: 'TOPIC-MATH-02',
+      questionText: 'What is the set difference A \\ B for A = {1, 2, 3} and B = {2, 4}?',
+      options: ['{1, 3}', '{4}', '{2}', '{1, 2, 3, 4}'],
+      correctIndex: 0,
+      explanation: 'A \\ B consists of elements in A that are not in B: {1, 3}.',
+      difficulty: 'Introductory'
+    },
+    {
+      id: 'MATH-02-14',
+      topicId: 'TOPIC-MATH-02',
+      questionText: 'What is the Pigeonhole Principle?',
+      options: ['If k+1 items are placed into k boxes, at least one box contains 2 or more items', 'Pigeons always fly in pairs', 'Every set has an empty subset', 'All relations are symmetric'],
+      correctIndex: 0,
+      explanation: 'The Pigeonhole Principle states if n > k items are put into k containers, at least one container holds > 1 items.',
+      difficulty: 'Standard'
+    },
+    {
+      id: 'MATH-02-15',
+      topicId: 'TOPIC-MATH-02',
+      questionText: 'If |A| = 4 and |B| = 5, what is the cardinality of A × B?',
+      options: ['20 (4 × 5)', '9', '1', '25'],
+      correctIndex: 0,
+      explanation: '|A × B| = |A| × |B| = 4 × 5 = 20.',
+      difficulty: 'Introductory'
+    },
+    {
+      id: 'MATH-02-16',
+      topicId: 'TOPIC-MATH-02',
+      questionText: 'What is the composition (g ∘ f)(x) defined as?',
+      options: ['g(f(x))', 'f(g(x))', 'g(x) × f(x)', 'g(x) + f(x)'],
+      correctIndex: 0,
+      explanation: 'Function composition (g ∘ f)(x) evaluates f(x) first, then applies g to the result: g(f(x)).',
+      difficulty: 'Introductory'
+    },
+    {
+      id: 'MATH-02-17',
+      topicId: 'TOPIC-MATH-02',
+      questionText: 'Which function has an inverse function f⁻¹?',
+      options: ['A bijective function', 'Any relation', 'Only constant functions', 'Only functions with 0 range'],
+      correctIndex: 0,
+      explanation: 'Only bijective (one-to-one and onto) functions have two-sided inverses.',
+      difficulty: 'Introductory'
+    },
+    {
+      id: 'MATH-02-18',
+      topicId: 'TOPIC-MATH-02',
+      questionText: 'What is an Antisymmetric relation?',
+      options: ['If (a, b) ∈ R and (b, a) ∈ R, then a = b', 'No elements are related', 'All elements are related to themselves', 'Reflexivity does not hold'],
+      correctIndex: 0,
+      explanation: 'Antisymmetry states that two distinct elements cannot be mutually related: (a, b) ∈ R ∧ (b, a) ∈ R ⇒ a = b.',
+      difficulty: 'Standard'
+    },
+    {
+      id: 'MATH-02-19',
+      topicId: 'TOPIC-MATH-02',
+      questionText: 'What are Disjoint sets?',
+      options: ['Sets whose intersection is the empty set (A ∩ B = ∅)', 'Sets with identical elements', 'Infinite sets', 'Complement sets'],
+      correctIndex: 0,
+      explanation: 'Two sets are disjoint if they share no common elements.',
+      difficulty: 'Introductory'
+    },
+    {
+      id: 'MATH-02-20',
+      topicId: 'TOPIC-MATH-02',
+      questionText: 'What is the symmetric difference A ⊕ B of two sets?',
+      options: ['(A ∪ B) \\ (A ∩ B)', 'A ∩ B', 'A × B', 'The empty set'],
+      correctIndex: 0,
+      explanation: 'Symmetric difference contains elements that belong to either A or B, but not both.',
+      difficulty: 'Standard'
+    }
+  ],
+
+  // ==========================================
+  // TOPIC-MATH-03: Graph Theory Foundations (20 Questions)
+  // ==========================================
+  'TOPIC-MATH-03': [
+    {
+      id: 'MATH-03-01',
+      topicId: 'TOPIC-MATH-03',
+      questionText: 'What is the Handshaking Lemma in an undirected graph G = (V, E)?',
+      options: ['The sum of degrees of all vertices equals 2 × |E|', 'The sum of degrees equals |V|', 'Every vertex has degree 2', 'Total edges equal vertices minus 1'],
+      correctIndex: 0,
+      explanation: 'Every edge contributes 1 to the degree of each of its two endpoint vertices: Σ deg(v) = 2|E|.',
+      difficulty: 'Introductory'
+    },
+    {
+      id: 'MATH-03-02',
+      topicId: 'TOPIC-MATH-03',
+      questionText: 'In any undirected graph, what must the number of vertices with odd degree be?',
+      options: ['Always an even number', 'Always an odd number', 'Always zero', 'Prime'],
+      correctIndex: 0,
+      explanation: 'Because the sum of degrees is 2|E| (even), the number of odd-degree vertices must be even.',
+      difficulty: 'Introductory'
+    },
+    {
+      id: 'MATH-03-03',
+      topicId: 'TOPIC-MATH-03',
+      questionText: 'How many edges does a Tree with n vertices have?',
+      options: ['n - 1 edges', 'n edges', 'n + 1 edges', '2n edges'],
+      correctIndex: 0,
+      explanation: 'A connected acyclic graph (tree) on n vertices always has exactly n - 1 edges.',
+      difficulty: 'Introductory'
+    },
+    {
+      id: 'MATH-03-04',
+      topicId: 'TOPIC-MATH-03',
+      questionText: 'What is an Eulerian Circuit in a connected graph?',
+      options: ['A closed walk that traverses every edge exactly once', 'A path that visits every vertex once', 'A cycle with 3 vertices', 'A tree traversal'],
+      correctIndex: 0,
+      explanation: 'An Euler circuit visits every edge in the graph exactly once and returns to the starting vertex.',
+      difficulty: 'Introductory'
+    },
+    {
+      id: 'MATH-03-05',
+      topicId: 'TOPIC-MATH-03',
+      questionText: 'When does a connected undirected graph contain an Eulerian Circuit?',
+      options: ['When every vertex has an even degree', 'When every vertex has an odd degree', 'When it is a tree', 'When it has n edges'],
+      correctIndex: 0,
+      explanation: 'Euler proved that a connected graph has an Euler circuit if and only if every vertex has an even degree.',
+      difficulty: 'Introductory'
+    },
+    {
+      id: 'MATH-03-06',
+      topicId: 'TOPIC-MATH-03',
+      questionText: 'What is a Hamiltonian Cycle?',
+      options: ['A closed cycle that visits every vertex in the graph exactly once', 'A cycle that traverses every edge once', 'A path with shortest length', 'An acyclic tree'],
+      correctIndex: 0,
+      explanation: 'A Hamiltonian cycle visits every vertex of the graph exactly once before returning to the start.',
+      difficulty: 'Introductory'
+    },
+    {
+      id: 'MATH-03-07',
+      topicId: 'TOPIC-MATH-03',
+      questionText: 'What is a Complete Graph K_n?',
+      options: ['A simple graph in which every pair of distinct vertices is connected by a unique edge', 'A graph with no edges', 'A graph with 1 cycle', 'A bipartite graph'],
+      correctIndex: 0,
+      explanation: 'In K_n, every vertex has an edge to every other vertex, giving n(n-1)/2 total edges.',
+      difficulty: 'Introductory'
+    },
+    {
+      id: 'MATH-03-08',
+      topicId: 'TOPIC-MATH-03',
+      questionText: 'How many edges are in the complete graph K_5?',
+      options: ['10 (5 × 4 / 2)', '5', '20', '15'],
+      correctIndex: 0,
+      explanation: 'Number of edges = n(n - 1) / 2 = 5(4) / 2 = 10.',
+      difficulty: 'Introductory'
+    },
+    {
+      id: 'MATH-03-09',
+      topicId: 'TOPIC-MATH-03',
+      questionText: 'What is a Bipartite Graph?',
+      options: [
+        'A graph whose vertices can be partitioned into two disjoint sets V1 and V2 such that every edge connects a vertex in V1 to V2',
+        'A graph with 2 cycles',
+        'A graph with directed edges only',
+        'A complete graph'
+      ],
+      correctIndex: 0,
+      explanation: 'A graph is bipartite if its vertices can be partitioned into two independent sets.',
+      difficulty: 'Introductory'
+    },
+    {
+      id: 'MATH-03-10',
+      topicId: 'TOPIC-MATH-03',
+      questionText: 'Which condition is necessary and sufficient for a graph to be Bipartite (2-colorable)?',
+      options: ['It contains no odd-length cycles', 'It has even number of vertices', 'It is connected', 'It has no trees'],
+      correctIndex: 0,
+      explanation: 'A graph is bipartite if and only if it contains no cycles of odd length.',
+      difficulty: 'Standard'
+    },
+    {
+      id: 'MATH-03-11',
+      topicId: 'TOPIC-MATH-03',
+      questionText: 'What is Euler\'s formula for a connected Planar Graph with V vertices, E edges, and F faces (regions)?',
+      options: ['V - E + F = 2', 'V + E - F = 2', 'V - E - F = 0', 'V × E = F'],
+      correctIndex: 0,
+      explanation: 'Euler\'s planar graph formula states V - E + F = 2.',
+      difficulty: 'Introductory'
+    },
+    {
+      id: 'MATH-03-12',
+      topicId: 'TOPIC-MATH-03',
+      questionText: 'According to the Four Color Theorem, what is the maximum number of colors needed to color any planar map so adjacent regions have different colors?',
+      options: ['4 colors', '5 colors', '3 colors', '6 colors'],
+      correctIndex: 0,
+      explanation: 'The celebrated Four Color Theorem proves that any planar graph is 4-colorable.',
+      difficulty: 'Introductory'
+    },
+    {
+      id: 'MATH-03-13',
+      topicId: 'TOPIC-MATH-03',
+      questionText: 'What is the Chromatic Number χ(G) of bipartite graph with at least one edge?',
+      options: ['2', '1', '3', 'Depends on edge count'],
+      correctIndex: 0,
+      explanation: 'By definition, bipartite graphs can be properly colored with exactly 2 colors.',
+      difficulty: 'Introductory'
+    },
+    {
+      id: 'MATH-03-14',
+      topicId: 'TOPIC-MATH-03',
+      questionText: 'What is an isolated vertex in a graph?',
+      options: ['A vertex with degree 0 (no connected edges)', 'A vertex connected to all others', 'A leaf vertex with degree 1', 'A cut vertex'],
+      correctIndex: 0,
+      explanation: 'An isolated vertex has degree 0 and has no incident edges.',
+      difficulty: 'Introductory'
+    },
+    {
+      id: 'MATH-03-15',
+      topicId: 'TOPIC-MATH-03',
+      questionText: 'What is a Pendant (Leaf) vertex in a tree?',
+      options: ['A vertex with degree 1', 'A vertex with degree 0', 'The root node', 'An internal node'],
+      correctIndex: 0,
+      explanation: 'A leaf or pendant vertex in a tree has a degree of exactly 1.',
+      difficulty: 'Introductory'
+    },
+    {
+      id: 'MATH-03-16',
+      topicId: 'TOPIC-MATH-03',
+      questionText: 'What does Kuratowski\'s Theorem state regarding planar graphs?',
+      options: [
+        'A graph is planar if and only if it does not contain a subgraph homeomorphic to K_5 or K_3,3',
+        'All planar graphs have 4 vertices',
+        'Trees are not planar',
+        'Bipartite graphs are never planar'
+      ],
+      correctIndex: 0,
+      explanation: 'Kuratowski\'s Theorem characterises planarity by the absence of K_5 and K_3,3 subdivisions.',
+      difficulty: 'Standard'
+    },
+    {
+      id: 'MATH-03-17',
+      topicId: 'TOPIC-MATH-03',
+      questionText: 'What is an Adjacency Matrix for a graph with n vertices?',
+      options: ['An n × n matrix where entry (i, j) is 1 if edge (i, j) exists, 0 otherwise', 'An n × m matrix', 'A list of weights', 'A diagonal matrix'],
+      correctIndex: 0,
+      explanation: 'An adjacency matrix is an n × n binary matrix indicating edge existence between vertex pairs.',
+      difficulty: 'Introductory'
+    },
+    {
+      id: 'MATH-03-18',
+      topicId: 'TOPIC-MATH-03',
+      questionText: 'What is a Spanning Tree of a connected graph G?',
+      options: ['A subgraph that is a tree and includes every vertex of G', 'A tree with all edges of G', 'A disconnected forest', 'A directed tree'],
+      correctIndex: 0,
+      explanation: 'A spanning tree connects all |V| vertices with |V| - 1 edges without any cycles.',
+      difficulty: 'Introductory'
+    },
+    {
+      id: 'MATH-03-19',
+      topicId: 'TOPIC-MATH-03',
+      questionText: 'Which algorithm finds a Minimum Spanning Tree (MST) in a weighted connected graph?',
+      options: ['Kruskal\'s Algorithm / Prim\'s Algorithm', 'Dijkstra\'s Algorithm', 'Bellman-Ford Algorithm', 'Floyd-Warshall'],
+      correctIndex: 0,
+      explanation: 'Both Kruskal\'s and Prim\'s algorithms greedily compute the Minimum Spanning Tree.',
+      difficulty: 'Introductory'
+    },
+    {
+      id: 'MATH-03-20',
+      topicId: 'TOPIC-MATH-03',
+      questionText: 'What is an Isomorphism between two graphs G1 and G2?',
+      options: [
+        'A bijection between vertex sets that preserves edge adjacency and non-adjacency',
+        'Having the same number of vertices only',
+        'Having identical vertex labels',
+        'A planar projection'
+      ],
+      correctIndex: 0,
+      explanation: 'Isomorphic graphs share identical topological structure, differing only in vertex labeling.',
+      difficulty: 'Standard'
+    }
+  ],
+
+  // ==========================================
+  // TOPIC-DBMS-01: Relational Modeling & ER Diagrams (20 Questions)
+  // ==========================================
+  'TOPIC-DBMS-01': [
+    {
+      id: 'DBMS-01-01',
+      topicId: 'TOPIC-DBMS-01',
+      questionText: 'In an Entity-Relationship (ER) diagram, what geometric shape represents an Entity Set?',
+      options: ['Rectangle', 'Diamond', 'Ellipse / Oval', 'Double circle'],
+      correctIndex: 0,
+      explanation: 'Rectangles represent entity sets (e.g. Student, Course) in Chen\'s ER notation.',
+      difficulty: 'Introductory'
+    },
+    {
+      id: 'DBMS-01-02',
+      topicId: 'TOPIC-DBMS-01',
+      questionText: 'In an ER diagram, what shape represents a Relationship between entities?',
+      options: ['Diamond', 'Rectangle', 'Circle', 'Triangle'],
+      correctIndex: 0,
+      explanation: 'Diamonds represent relationship sets (e.g. Enrolls, Teaches) connecting entity sets.',
+      difficulty: 'Introductory'
+    },
+    {
+      id: 'DBMS-01-03',
+      topicId: 'TOPIC-DBMS-01',
+      questionText: 'What shape represents an Attribute of an entity in standard ER diagrams?',
+      options: ['Ellipse / Oval', 'Square', 'Hexagon', 'Line'],
+      correctIndex: 0,
+      explanation: 'Ovals or ellipses represent attributes (e.g. Student_Name, Roll_No).',
+      difficulty: 'Introductory'
+    },
+    {
+      id: 'DBMS-01-04',
+      topicId: 'TOPIC-DBMS-01',
+      questionText: 'What is a Primary Key in a relational database table?',
+      options: [
+        'An attribute or minimal set of attributes that uniquely identifies each tuple (row) and cannot contain NULL',
+        'Any column that has numbers',
+        'A key that points to another table',
+        'The last column of the table'
+      ],
+      correctIndex: 0,
+      explanation: 'A primary key enforces entity integrity: unique values and NOT NULL across all tuples.',
+      difficulty: 'Introductory'
+    },
+    {
+      id: 'DBMS-01-05',
+      topicId: 'TOPIC-DBMS-01',
+      questionText: 'What is a Foreign Key?',
+      options: [
+        'An attribute in one table that references the Primary Key of another table, enforcing referential integrity',
+        'A key encrypted with passwords',
+        'A key used outside the database',
+        'An alternate unique key'
+      ],
+      correctIndex: 0,
+      explanation: 'Foreign keys link related records across tables by referencing the parent primary key.',
+      difficulty: 'Introductory'
+    },
+    {
+      id: 'DBMS-01-06',
+      topicId: 'TOPIC-DBMS-01',
+      questionText: 'In relational database terminology, what is a single row in a table called?',
+      options: ['Tuple', 'Attribute', 'Domain', 'Schema'],
+      correctIndex: 0,
+      explanation: 'A row in a relational table represents a record and is formally called a Tuple.',
+      difficulty: 'Introductory'
+    },
+    {
+      id: 'DBMS-01-07',
+      topicId: 'TOPIC-DBMS-01',
+      questionText: 'In relational database terminology, what is a column in a table called?',
+      options: ['Attribute', 'Tuple', 'Cardinality', 'Instance'],
+      correctIndex: 0,
+      explanation: 'A column represents a named field of data and is formally called an Attribute.',
+      difficulty: 'Introductory'
+    },
+    {
+      id: 'DBMS-01-08',
+      topicId: 'TOPIC-DBMS-01',
+      questionText: 'What is the Cardinality of a relational table?',
+      options: ['The total number of rows (tuples) in the table', 'The total number of columns (attributes)', 'The table name', 'The index size'],
+      correctIndex: 0,
+      explanation: 'Cardinality refers to the number of rows (tuples) in a relation.',
+      difficulty: 'Introductory'
+    },
+    {
+      id: 'DBMS-01-09',
+      topicId: 'TOPIC-DBMS-01',
+      questionText: 'What is the Degree of a relational table?',
+      options: ['The total number of columns (attributes) in the relation schema', 'The total number of rows', 'The number of keys', 'The database size'],
+      correctIndex: 0,
+      explanation: 'The degree of a relation is the number of attributes (columns) it possesses.',
+      difficulty: 'Introductory'
+    },
+    {
+      id: 'DBMS-01-10',
+      topicId: 'TOPIC-DBMS-01',
+      questionText: 'What is a Weak Entity in ER modeling?',
+      options: [
+        'An entity set that does not have a primary key of its own and depends on an owner entity set',
+        'An entity with only 1 attribute',
+        'An entity with no relationships',
+        'A table with zero rows'
+      ],
+      correctIndex: 0,
+      explanation: 'Weak entities lack sufficient attributes for a primary key and rely on an identifying relationship with an owner entity.',
+      difficulty: 'Introductory'
+    },
+    {
+      id: 'DBMS-01-11',
+      topicId: 'TOPIC-DBMS-01',
+      questionText: 'How is a Weak Entity Set represented in an ER diagram?',
+      options: ['Double Rectangle', 'Dashed Oval', 'Double Diamond', 'Dotted Line'],
+      correctIndex: 0,
+      explanation: 'Weak entity sets are drawn using double rectangles.',
+      difficulty: 'Introductory'
+    },
+    {
+      id: 'DBMS-01-12',
+      topicId: 'TOPIC-DBMS-01',
+      questionText: 'What type of attribute can be split into smaller, independent sub-parts (e.g. Name into First_Name, Last_Name)?',
+      options: ['Composite Attribute', 'Atomic Attribute', 'Derived Attribute', 'Multivalued Attribute'],
+      correctIndex: 0,
+      explanation: 'Composite attributes can be subdivided into sub-attributes with their own independent meanings.',
+      difficulty: 'Introductory'
+    },
+    {
+      id: 'DBMS-01-13',
+      topicId: 'TOPIC-DBMS-01',
+      questionText: 'How is a Multivalued Attribute (e.g. Phone_Numbers, Skills) represented in an ER diagram?',
+      options: ['Double Ellipse / Double Oval', 'Dotted Rectangle', 'Solid Triangle', 'Diamond'],
+      correctIndex: 0,
+      explanation: 'Attributes that can hold multiple values for a single entity are represented by double ellipses.',
+      difficulty: 'Introductory'
+    },
+    {
+      id: 'DBMS-01-14',
+      topicId: 'TOPIC-DBMS-01',
+      questionText: 'What is a Derived Attribute (e.g. Age computed from Date_of_Birth)?',
+      options: [
+        'An attribute whose value is calculated from other related stored attributes',
+        'An attribute imported from external files',
+        'A primary key',
+        'A foreign key'
+      ],
+      correctIndex: 0,
+      explanation: 'Derived attributes are calculated dynamically from base stored attributes and drawn with dashed ovals.',
+      difficulty: 'Introductory'
+    },
+    {
+      id: 'DBMS-01-15',
+      topicId: 'TOPIC-DBMS-01',
+      questionText: 'What is a Candidate Key?',
+      options: [
+        'A minimal superkey capable of uniquely identifying tuples in a relation',
+        'Any foreign key',
+        'A key that allows NULLs',
+        'The first column created'
+      ],
+      correctIndex: 0,
+      explanation: 'Candidate keys are minimal superkeys; one candidate key is chosen to be the primary key.',
+      difficulty: 'Introductory'
+    },
+    {
+      id: 'DBMS-01-16',
+      topicId: 'TOPIC-DBMS-01',
+      questionText: 'What is a Superkey?',
+      options: [
+        'A set of one or more attributes that uniquely identifies a tuple in a relation (may contain redundant attributes)',
+        'Only single column keys',
+        'An encrypted key',
+        'A non-unique index'
+      ],
+      correctIndex: 0,
+      explanation: 'A superkey uniquely identifies tuples; a candidate key is a minimal superkey.',
+      difficulty: 'Standard'
+    },
+    {
+      id: 'DBMS-01-17',
+      topicId: 'TOPIC-DBMS-01',
+      questionText: 'In a Many-to-Many (M:N) relationship between Student and Course, how is it converted into the relational model?',
+      options: [
+        'By creating a separate Junction / Associative table containing foreign keys referencing both tables',
+        'By adding Course_ID into Student table only',
+        'By merging both tables into one single table',
+        'It cannot be represented in relational databases'
+      ],
+      correctIndex: 0,
+      explanation: 'Many-to-many relationships require a separate bridge/junction table holding foreign keys of both entities.',
+      difficulty: 'Introductory'
+    },
+    {
+      id: 'DBMS-01-18',
+      topicId: 'TOPIC-DBMS-01',
+      questionText: 'What integrity constraint states that Primary Key values cannot be NULL?',
+      options: ['Entity Integrity Constraint', 'Referential Integrity Constraint', 'Domain Integrity', 'Key Constraint'],
+      correctIndex: 0,
+      explanation: 'Entity Integrity requires primary key columns to be unique and non-null.',
+      difficulty: 'Introductory'
+    },
+    {
+      id: 'DBMS-01-19',
+      topicId: 'TOPIC-DBMS-01',
+      questionText: 'What integrity constraint ensures that foreign key values must either match an existing primary key or be NULL?',
+      options: ['Referential Integrity Constraint', 'Entity Integrity Constraint', 'Domain Constraint', 'Cardinality Constraint'],
+      correctIndex: 0,
+      explanation: 'Referential integrity prevents dangling foreign key references to nonexistent records.',
+      difficulty: 'Introductory'
+    },
+    {
+      id: 'DBMS-01-20',
+      topicId: 'TOPIC-DBMS-01',
+      questionText: 'What does the Relational Schema describe?',
+      options: [
+        'The structural definition of relations, including table names, attribute names, domains, and integrity constraints',
+        'The physical hard drive layout',
+        'The current rows in the database',
+        'The database backup file'
+      ],
+      correctIndex: 0,
+      explanation: 'The schema is the blueprint or logical structure of the database, whereas the instance is data at a point in time.',
+      difficulty: 'Introductory'
+    }
+  ],
+
+  // ==========================================
+  // TOPIC-DBMS-02: Database Normalization 1NF to BCNF (20 Questions)
+  // ==========================================
+  'TOPIC-DBMS-02': [
+    {
+      id: 'DBMS-02-01',
+      topicId: 'TOPIC-DBMS-02',
+      questionText: 'What is the primary objective of Database Normalization?',
+      options: [
+        'To eliminate data redundancy, avoid insertion/update/deletion anomalies, and improve data integrity',
+        'To increase storage size',
+        'To encrypt all database tables',
+        'To speed up full table scans'
+      ],
+      correctIndex: 0,
+      explanation: 'Normalization organizes relational tables to minimize duplicate data and eliminate update anomalies.',
+      difficulty: 'Introductory'
+    },
+    {
+      id: 'DBMS-02-02',
+      topicId: 'TOPIC-DBMS-02',
+      questionText: 'What is the core requirement for a relation to be in First Normal Form (1NF)?',
+      options: [
+        'All attribute values must be Atomic (indivisible single values; no repeating groups or arrays)',
+        'No partial dependencies',
+        'No transitive dependencies',
+        'Every determinant must be a candidate key'
+      ],
+      correctIndex: 0,
+      explanation: '1NF requires domain of each attribute to contain only atomic (indivisible) scalar values.',
+      difficulty: 'Introductory'
+    },
+    {
+      id: 'DBMS-02-03',
+      topicId: 'TOPIC-DBMS-02',
+      questionText: 'What defines a Partial Functional Dependency?',
+      options: [
+        'A non-prime attribute depends on only a proper subset of a composite candidate key',
+        'An attribute depends on the full primary key',
+        'A primary key depends on a foreign key',
+        'Two non-prime attributes depend on each other'
+      ],
+      correctIndex: 0,
+      explanation: 'Partial dependency occurs when a non-key attribute is determined by part of a composite primary key.',
+      difficulty: 'Introductory'
+    },
+    {
+      id: 'DBMS-02-04',
+      topicId: 'TOPIC-DBMS-02',
+      questionText: 'What is required for a relation to be in Second Normal Form (2NF)?',
+      options: [
+        'It is in 1NF and contains No Partial Dependencies (all non-prime attributes are fully functionally dependent on primary key)',
+        'It must have zero foreign keys',
+        'No transitive dependencies',
+        'It must have only 2 tables'
+      ],
+      correctIndex: 0,
+      explanation: '2NF eliminates partial functional dependencies on candidate keys.',
+      difficulty: 'Introductory'
+    },
+    {
+      id: 'DBMS-02-05',
+      topicId: 'TOPIC-DBMS-02',
+      questionText: 'If a table in 1NF has a single-attribute primary key (non-composite), is it automatically in 2NF?',
+      options: [
+        'Yes, because partial dependencies can only exist with composite primary keys',
+        'No, 2NF requires more checks',
+        'Only if it has numbers',
+        'Never'
+      ],
+      correctIndex: 0,
+      explanation: 'A partial dependency requires a proper subset of the key. With a single attribute key, no proper subsets exist!',
+      difficulty: 'Introductory'
+    },
+    {
+      id: 'DBMS-02-06',
+      topicId: 'TOPIC-DBMS-02',
+      questionText: 'What is a Transitive Dependency?',
+      options: [
+        'A functional dependency X → Z mediated through Y (X → Y and Y → Z where Y is not a candidate key)',
+        'A dependency on composite keys',
+        'A self-referencing foreign key',
+        'A circular loop between tables'
+      ],
+      correctIndex: 0,
+      explanation: 'Transitive dependency occurs when a non-prime attribute determines another non-prime attribute.',
+      difficulty: 'Introductory'
+    },
+    {
+      id: 'DBMS-02-07',
+      topicId: 'TOPIC-DBMS-02',
+      questionText: 'What is required for a relation to be in Third Normal Form (3NF)?',
+      options: [
+        'It is in 2NF and contains No Transitive Dependencies for non-prime attributes',
+        'It must have 3 primary keys',
+        'All attributes must be varchar',
+        'It has no candidate keys'
+      ],
+      correctIndex: 0,
+      explanation: '3NF removes transitive functional dependencies between non-prime attributes.',
+      difficulty: 'Introductory'
+    },
+    {
+      id: 'DBMS-02-08',
+      topicId: 'TOPIC-DBMS-02',
+      questionText: 'In 3NF, for every functional dependency X → Y, what condition must hold?',
+      options: [
+        'Either X is a Superkey, or Y is a Prime attribute (part of some candidate key)',
+        'X must be a foreign key',
+        'Y must be a number',
+        'X and Y must be identical'
+      ],
+      correctIndex: 0,
+      explanation: 'In 3NF, for any non-trivial dependency X → Y, X is a superkey OR Y is a prime attribute.',
+      difficulty: 'Standard'
+    },
+    {
+      id: 'DBMS-02-09',
+      topicId: 'TOPIC-DBMS-02',
+      questionText: 'What is Boyce-Codd Normal Form (BCNF)?',
+      options: [
+        'A stricter version of 3NF where for EVERY non-trivial functional dependency X → Y, X must strictly be a Superkey',
+        'A form with binary trees',
+        'A form allowing partial dependencies',
+        'Equivalent to 1NF'
+      ],
+      correctIndex: 0,
+      explanation: 'BCNF requires the determinant X to be a superkey in every non-trivial functional dependency X → Y.',
+      difficulty: 'Introductory'
+    },
+    {
+      id: 'DBMS-02-10',
+      topicId: 'TOPIC-DBMS-02',
+      questionText: 'Is every relation in BCNF also guaranteed to be in 3NF?',
+      options: [
+        'Yes, BCNF is strictly stronger than 3NF',
+        'No, 3NF is stronger than BCNF',
+        'They are unrelated',
+        'Only if tables are small'
+      ],
+      correctIndex: 0,
+      explanation: 'BCNF is a stricter, stronger refinement of 3NF: BCNF ⊂ 3NF ⊂ 2NF ⊂ 1NF.',
+      difficulty: 'Introductory'
+    },
+    {
+      id: 'DBMS-02-11',
+      topicId: 'TOPIC-DBMS-02',
+      questionText: 'What anomaly occurs when deleting one piece of data unintentionally removes unrelated vital data?',
+      options: ['Deletion Anomaly', 'Insertion Anomaly', 'Update Anomaly', 'Read Anomaly'],
+      correctIndex: 0,
+      explanation: 'A deletion anomaly causes unintended loss of secondary data when a tuple is deleted.',
+      difficulty: 'Introductory'
+    },
+    {
+      id: 'DBMS-02-12',
+      topicId: 'TOPIC-DBMS-02',
+      questionText: 'What anomaly occurs when updating a value in one row leaves conflicting old values in other rows?',
+      options: ['Update / Modification Anomaly (Inconsistency)', 'Deletion Anomaly', 'Deadlock Anomaly', 'Syntax Anomaly'],
+      correctIndex: 0,
+      explanation: 'Update anomalies lead to inconsistent database states when redundant copies are not all synchronized.',
+      difficulty: 'Introductory'
+    },
+    {
+      id: 'DBMS-02-13',
+      topicId: 'TOPIC-DBMS-02',
+      questionText: 'What is a Lossless Join Decomposition?',
+      options: [
+        'A decomposition where joining the decomposed tables via natural join reconstructs the original table without spurious tuples',
+        'A join that drops duplicate columns',
+        'A join without WHERE clause',
+        'A join that loses rows'
+      ],
+      correctIndex: 0,
+      explanation: 'Lossless join guarantees no information is lost or falsely created when relations are reunited.',
+      difficulty: 'Standard'
+    },
+    {
+      id: 'DBMS-02-14',
+      topicId: 'TOPIC-DBMS-02',
+      questionText: 'What is Dependency Preservation during normalization decomposition?',
+      options: [
+        'All original functional dependencies can be enforced using dependencies local to the decomposed relations',
+        'Foreign keys are preserved in backups',
+        'Only primary keys are kept',
+        'Indexes are copied'
+      ],
+      correctIndex: 0,
+      explanation: 'Dependency preservation ensures constraints can be checked without requiring costly multi-table joins.',
+      difficulty: 'Standard'
+    },
+    {
+      id: 'DBMS-02-15',
+      topicId: 'TOPIC-DBMS-02',
+      questionText: 'Can any relational schema always be decomposed into 3NF such that it is BOTH Lossless and Dependency Preserving?',
+      options: [
+        'Yes, 3NF decomposition is always guaranteed to achieve both lossless join and dependency preservation',
+        'No, never possible',
+        'Only for 2-column tables',
+        'Only in BCNF'
+      ],
+      correctIndex: 0,
+      explanation: '3NF synthesis algorithm guarantees both lossless join and dependency preservation.',
+      difficulty: 'Standard'
+    },
+    {
+      id: 'DBMS-02-16',
+      topicId: 'TOPIC-DBMS-02',
+      questionText: 'Why might a BCNF decomposition sometimes fail to be preferred over 3NF in real-world systems?',
+      options: [
+        'BCNF decompositions cannot always preserve all functional dependencies',
+        'BCNF is slower to read',
+        'BCNF tables cannot have indexes',
+        'BCNF requires commercial databases'
+      ],
+      correctIndex: 0,
+      explanation: 'Some schemas decomposed into BCNF lose dependency preservation, requiring expensive cross-table checks.',
+      difficulty: 'Standard'
+    },
+    {
+      id: 'DBMS-02-17',
+      topicId: 'TOPIC-DBMS-02',
+      questionText: 'What is Armstrong\'s Axiom of Reflexivity for functional dependencies?',
+      options: ['If Y ⊆ X, then X → Y', 'If X → Y, then Y → X', 'If X → Y and Y → Z, then X → Z', 'X → X only'],
+      correctIndex: 0,
+      explanation: 'Reflexivity states that any set of attributes functionally determines any of its subsets: Y ⊆ X ⇒ X → Y.',
+      difficulty: 'Introductory'
+    },
+    {
+      id: 'DBMS-02-18',
+      topicId: 'TOPIC-DBMS-02',
+      questionText: 'What is Armstrong\'s Axiom of Augmentation?',
+      options: ['If X → Y, then XZ → YZ for any attribute set Z', 'If X → Y, then Y → X', 'If X → Y, then X → Z', 'XZ → X'],
+      correctIndex: 0,
+      explanation: 'Augmentation states adding attribute set Z to both sides preserves validity: X → Y ⇒ XZ → YZ.',
+      difficulty: 'Introductory'
+    },
+    {
+      id: 'DBMS-02-19',
+      topicId: 'TOPIC-DBMS-02',
+      questionText: 'What is Armstrong\'s Axiom of Transitivity?',
+      options: ['If X → Y and Y → Z, then X → Z', 'If X → Y, then Z → Y', 'If X → Z, then Z → X', 'X → YZ'],
+      correctIndex: 0,
+      explanation: 'Transitivity states if X determines Y and Y determines Z, then X determines Z.',
+      difficulty: 'Introductory'
+    },
+    {
+      id: 'DBMS-02-20',
+      topicId: 'TOPIC-DBMS-02',
+      questionText: 'What is the Attribute Closure X⁺ under a set of functional dependencies F?',
+      options: [
+        'The set of all attributes functionally determined by X under F',
+        'All attributes not in X',
+        'The primary key of X',
+        'All foreign keys'
+      ],
+      correctIndex: 0,
+      explanation: 'X⁺ denotes the complete set of attributes that can be inferred from X using Armstrong\'s axioms.',
+      difficulty: 'Introductory'
+    }
+  ],
+
+  // ==========================================
+  // TOPIC-DBMS-03: SQL Transactions & Indexing (20 Questions)
+  // ==========================================
+  'TOPIC-DBMS-03': [
+    {
+      id: 'DBMS-03-01',
+      topicId: 'TOPIC-DBMS-03',
+      questionText: 'What does the ACID acronym stand for in database transaction management?',
+      options: [
+        'Atomicity, Consistency, Isolation, Durability',
+        'Access, Control, Indexing, Delivery',
+        'Algorithm, Computation, Iteration, Data',
+        'Authentication, Cipher, Integrity, Domain'
+      ],
+      correctIndex: 0,
+      explanation: 'ACID guarantees reliable processing of database transactions.',
+      difficulty: 'Introductory'
+    },
+    {
+      id: 'DBMS-03-02',
+      topicId: 'TOPIC-DBMS-03',
+      questionText: 'What does the Atomicity property guarantee?',
+      options: [
+        'All operations in the transaction succeed together, or all changes are rolled back ("all-or-nothing")',
+        'Data is stored atomically in 1NF',
+        'Transactions execute instantly',
+        'Single CPU processing'
+      ],
+      correctIndex: 0,
+      explanation: 'Atomicity ensures that a transaction cannot be partially committed.',
+      difficulty: 'Introductory'
+    },
+    {
+      id: 'DBMS-03-03',
+      topicId: 'TOPIC-DBMS-03',
+      questionText: 'What does the Durability property guarantee?',
+      options: [
+        'Once a transaction is committed, its updates persist permanently even in the event of system crashes or power failures',
+        'Transactions run forever',
+        'Memory never leaks',
+        'Indexes are indestructible'
+      ],
+      correctIndex: 0,
+      explanation: 'Durability ensures committed changes survive server restarts via write-ahead transaction logs (WAL).',
+      difficulty: 'Introductory'
+    },
+    {
+      id: 'DBMS-03-04',
+      topicId: 'TOPIC-DBMS-03',
+      questionText: 'What does the Isolation property ensure?',
+      options: [
+        'Concurrent transactions execute independently without interfering with or observing intermediate uncommitted states of others',
+        'Only 1 user can connect at a time',
+        'Database runs in a virtual machine',
+        'Tables are isolated on separate disks'
+      ],
+      correctIndex: 0,
+      explanation: 'Isolation prevents race conditions and dirty reads during concurrent transaction execution.',
+      difficulty: 'Introductory'
+    },
+    {
+      id: 'DBMS-03-05',
+      topicId: 'TOPIC-DBMS-03',
+      questionText: 'Which SQL command permanently saves all changes made during the current transaction to the database?',
+      options: ['COMMIT', 'ROLLBACK', 'SAVEPOINT', 'CHECKPOINT'],
+      correctIndex: 0,
+      explanation: 'COMMIT makes the transactional modifications permanent and visible to other users.',
+      difficulty: 'Introductory'
+    },
+    {
+      id: 'DBMS-03-06',
+      topicId: 'TOPIC-DBMS-03',
+      questionText: 'Which SQL command undoes all changes made in the current uncommitted transaction?',
+      options: ['ROLLBACK', 'COMMIT', 'DELETE', 'DROP'],
+      correctIndex: 0,
+      explanation: 'ROLLBACK restores data to the state prior to the transaction\'s start.',
+      difficulty: 'Introductory'
+    },
+    {
+      id: 'DBMS-03-07',
+      topicId: 'TOPIC-DBMS-03',
+      questionText: 'What is a Dirty Read phenomenon in database concurrency?',
+      options: [
+        'A transaction reads data modified by an uncommitted concurrent transaction that may later rollback',
+        'Reading data from corrupted disk sectors',
+        'Reading expired cache data',
+        'Reading without an index'
+      ],
+      correctIndex: 0,
+      explanation: 'A dirty read occurs when Transaction A views dirty uncommitted updates from Transaction B before B aborts.',
+      difficulty: 'Introductory'
+    },
+    {
+      id: 'DBMS-03-08',
+      topicId: 'TOPIC-DBMS-03',
+      questionText: 'What is a Non-Repeatable Read?',
+      options: [
+        'A transaction re-reads the same row and discovers values were altered by another committed transaction',
+        'A query that errors on second execution',
+        'A query that cannot use loops',
+        'A read timeout'
+      ],
+      correctIndex: 0,
+      explanation: 'Non-repeatable read happens when subsequent reads of the same row yield different values due to committed updates.',
+      difficulty: 'Introductory'
+    },
+    {
+      id: 'DBMS-03-09',
+      topicId: 'TOPIC-DBMS-03',
+      questionText: 'What is the highest and most rigorous ANSI SQL Transaction Isolation Level?',
+      options: ['SERIALIZABLE', 'REPEATABLE READ', 'READ COMMITTED', 'READ UNCOMMITTED'],
+      correctIndex: 0,
+      explanation: 'SERIALIZABLE prevents dirty reads, non-repeatable reads, and phantom rows, ensuring execution order equivalence.',
+      difficulty: 'Introductory'
+    },
+    {
+      id: 'DBMS-03-10',
+      topicId: 'TOPIC-DBMS-03',
+      questionText: 'What data structure is most widely used by relational database engines (like MySQL, PostgreSQL, Oracle) for primary table indexing?',
+      options: ['B+ Tree (Balanced Multiway Search Tree)', 'Linked List', 'Binary Heap', 'Queue'],
+      correctIndex: 0,
+      explanation: 'B+ Trees provide O(log n) lookups, insertions, deletions, and sequential range scans on disk blocks.',
+      difficulty: 'Introductory'
+    },
+    {
+      id: 'DBMS-03-11',
+      topicId: 'TOPIC-DBMS-03',
+      questionText: 'What distinguishes a Clustered Index from a Non-Clustered (Secondary) Index?',
+      options: [
+        'A clustered index dictates the actual physical sorting order of table rows on disk (only 1 per table)',
+        'Clustered indexes are stored in RAM only',
+        'A table can have 100 clustered indexes',
+        'Non-clustered indexes store data rows directly'
+      ],
+      correctIndex: 0,
+      explanation: 'Because data can only be physically sorted one way on disk, a table can have only one clustered index.',
+      difficulty: 'Introductory'
+    },
+    {
+      id: 'DBMS-03-12',
+      topicId: 'TOPIC-DBMS-03',
+      questionText: 'What is a Deadlock in database transaction management?',
+      options: [
+        'A condition where two or more transactions are each blocked waiting for locks held by the other, forming a cyclic dependency',
+        'When the database disk is 100% full',
+        'When network cables disconnect',
+        'When an index is deleted'
+      ],
+      correctIndex: 0,
+      explanation: 'Deadlock occurs when transaction T1 holds Lock A and waits for Lock B, while T2 holds Lock B and waits for Lock A.',
+      difficulty: 'Introductory'
+    },
+    {
+      id: 'DBMS-03-13',
+      topicId: 'TOPIC-DBMS-03',
+      questionText: 'What SQL statement is used to create an index on the "email" column of a "students" table?',
+      options: [
+        'CREATE INDEX idx_student_email ON students(email);',
+        'ADD INDEX email TO students;',
+        'MAKE INDEX ON students.email;',
+        'INDEX students(email);'
+      ],
+      correctIndex: 0,
+      explanation: 'Standard SQL syntax is: CREATE INDEX index_name ON table_name(column_name);',
+      difficulty: 'Introductory'
+    },
+    {
+      id: 'DBMS-03-14',
+      topicId: 'TOPIC-DBMS-03',
+      questionText: 'Why shouldn\'t every single column in a database table be indexed?',
+      options: [
+        'Indexes add write overhead (INSERT, UPDATE, DELETE become slower) and consume additional disk storage',
+        'Database crashes if there are > 2 indexes',
+        'Indexes make SELECT queries slower',
+        'Indexes disable primary keys'
+      ],
+      correctIndex: 0,
+      explanation: 'Every index requires real-time tree rebalancing and extra disk writes whenever rows are inserted or modified.',
+      difficulty: 'Introductory'
+    },
+    {
+      id: 'DBMS-03-15',
+      topicId: 'TOPIC-DBMS-03',
+      questionText: 'What does EXPLAIN or EXPLAIN ANALYZE do in SQL queries?',
+      options: [
+        'Displays the Query Execution Plan chosen by the query optimizer (index scans vs sequential scans)',
+        'Translates SQL into Python',
+        'Corrects syntax errors automatically',
+        'Backs up the query table'
+      ],
+      correctIndex: 0,
+      explanation: 'EXPLAIN shows cost estimates, join strategies, and whether index lookups or sequential table scans will execute.',
+      difficulty: 'Introductory'
+    },
+    {
+      id: 'DBMS-03-16',
+      topicId: 'TOPIC-DBMS-03',
+      questionText: 'What is Two-Phase Locking (2PL)?',
+      options: [
+        'A concurrency protocol with a Growing Phase (acquiring locks) followed by a Shrinking Phase (releasing locks)',
+        'Entering passwords twice',
+        'Using 2 database servers',
+        'Locking both rows and columns'
+      ],
+      correctIndex: 0,
+      explanation: '2PL ensures serializability: once a transaction releases any lock, it may not acquire any new locks.',
+      difficulty: 'Standard'
+    },
+    {
+      id: 'DBMS-03-17',
+      topicId: 'TOPIC-DBMS-03',
+      questionText: 'What is a Write-Ahead Log (WAL)?',
+      options: [
+        'Writing all transaction changes to a sequential log on persistent storage BEFORE applying them to data pages',
+        'Writing documentation before writing SQL',
+        'Logging all SELECT queries',
+        'A user activity monitor'
+      ],
+      correctIndex: 0,
+      explanation: 'WAL ensures crash recovery: unwritten buffer modifications can be replayed from the log upon reboot.',
+      difficulty: 'Introductory'
+    },
+    {
+      id: 'DBMS-03-18',
+      topicId: 'TOPIC-DBMS-03',
+      questionText: 'What is a Shared Lock (S-Lock)?',
+      options: [
+        'A lock that allows multiple transactions to concurrently read a data item, but prevents write operations',
+        'A lock that permits writes only',
+        'A lock shared across networks',
+        'A lock that never releases'
+      ],
+      correctIndex: 0,
+      explanation: 'Shared locks allow concurrent reading; multiple transactions can hold shared locks on the same data item.',
+      difficulty: 'Introductory'
+    },
+    {
+      id: 'DBMS-03-19',
+      topicId: 'TOPIC-DBMS-03',
+      questionText: 'What is an Exclusive Lock (X-Lock)?',
+      options: [
+        'A lock granted to a single transaction for updating data; no other transaction can read or write it',
+        'A lock for administrators only',
+        'A read-only lock',
+        'A lock on external files'
+      ],
+      correctIndex: 0,
+      explanation: 'An exclusive lock prohibits any concurrent shared or exclusive locks on that data item.',
+      difficulty: 'Introductory'
+    },
+    {
+      id: 'DBMS-03-20',
+      topicId: 'TOPIC-DBMS-03',
+      questionText: 'What is a Composite (Multi-column) Index?',
+      options: [
+        'An index constructed on two or more columns of a table (e.g. INDEX(dept_id, enrollment_year))',
+        'An index that joins 2 tables',
+        'An index on numbers and text combined',
+        'An index stored in 2 files'
+      ],
+      correctIndex: 0,
+      explanation: 'Composite indexes optimize queries filtering or sorting across multiple attributes using the leftmost prefix rule.',
+      difficulty: 'Introductory'
+    }
   ]
 };

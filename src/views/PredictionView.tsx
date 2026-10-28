@@ -244,73 +244,106 @@ export const PredictionView: React.FC = () => {
             </div>
           </div>
 
-          {/* Mathematical Recency Weights Breakdown */}
+          {/* Recent Assessment Momentum & Weighting Showcase */}
           {prediction.formulaBreakdown.recencyWeights.length > 0 && (
-            <div className="bg-white border border-slate-200 rounded-xl p-5 shadow-xs space-y-3">
-              <div className="flex items-center justify-between">
+            <div className="bg-white border border-slate-200 rounded-2xl p-5 shadow-xs space-y-4">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-100 pb-3">
                 <div>
-                  <h3 className="text-sm font-bold text-slate-900">
-                    Linear Recency Weighting Decomposition
+                  <h3 className="text-sm font-bold text-slate-950 flex items-center gap-2">
+                    <Sparkles className="w-4 h-4 text-purple-600" />
+                    <span>Recent Assessment Momentum & Influence Timeline</span>
                   </h3>
                   <p className="text-xs text-slate-500 mt-0.5">
-                    Formal weighting formula: W_i = (2 · i) / (n · (n + 1)), ensuring recent attempts carry greater influence.
+                    Recent evaluation scores carry greater influence in the prediction because they reflect the scholar's most recent conceptual recovery and practice drills.
                   </p>
                 </div>
-                <span className="text-[11px] font-mono text-slate-500 font-semibold bg-slate-100 px-2 py-0.5 rounded">
-                  Sum of Weights = 1.000
+                <span className="text-[11px] font-mono text-purple-800 font-semibold bg-purple-50 border border-purple-200 px-2.5 py-1 rounded-lg shrink-0">
+                  Weighted Baseline: <strong className="text-purple-950 font-bold">{prediction.formulaBreakdown.baselineWeightedScore}%</strong>
                 </span>
               </div>
 
-              <div className="border border-slate-200 rounded-lg overflow-hidden">
-                <table className="w-full text-left text-xs border-collapse">
-                  <thead>
-                    <tr className="bg-slate-50 border-b border-slate-200 text-slate-700 font-semibold text-[11px]">
-                      <th className="py-2 px-3">Attempt #</th>
-                      <th className="py-2 px-3">Date</th>
-                      <th className="py-2 px-3">Assessment Name</th>
-                      <th className="py-2 px-3 text-right font-mono">Actual Score</th>
-                      <th className="py-2 px-3 text-right font-mono">Recency Weight (W_i)</th>
-                      <th className="py-2 px-3 text-right font-mono">Contribution (W_i · Score)</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-slate-100">
-                    {prediction.formulaBreakdown.recencyWeights.map(w => (
-                      <tr key={w.attempt} className="hover:bg-slate-50/70">
-                        <td className="py-2 px-3 font-mono font-medium text-slate-700">Attempt {w.attempt}</td>
-                        <td className="py-2 px-3 font-mono text-[11px] text-slate-500">{w.date}</td>
-                        <td className="py-2 px-3 text-slate-800 font-medium">{w.assessmentName}</td>
-                        <td className="py-2 px-3 text-right font-mono font-bold text-slate-900">{w.score}%</td>
-                        <td className="py-2 px-3 text-right font-mono text-blue-700">{w.weight}</td>
-                        <td className="py-2 px-3 text-right font-mono font-bold text-purple-700">{w.weightedScore}%</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                  <tfoot>
-                    <tr className="bg-slate-100/70 font-semibold border-t border-slate-200 text-slate-900">
-                      <td colSpan={5} className="py-2 px-3 text-right">
-                        Calculated Weighted Baseline (B):
-                      </td>
-                      <td className="py-2 px-3 text-right font-mono text-purple-900 font-bold">
-                        {prediction.formulaBreakdown.baselineWeightedScore}%
-                      </td>
-                    </tr>
-                  </tfoot>
-                </table>
+              {/* Visual Assessment Cards Timeline */}
+              <div className="space-y-2.5">
+                {prediction.formulaBreakdown.recencyWeights.map((w, idx) => {
+                  const percentWeight = Math.round(w.weight * 100);
+                  const isLatest = idx === prediction.formulaBreakdown.recencyWeights.length - 1;
+
+                  return (
+                    <div 
+                      key={w.attempt} 
+                      className={`p-3.5 rounded-xl border transition-all ${
+                        isLatest 
+                          ? 'bg-purple-50/60 border-purple-200 shadow-2xs' 
+                          : 'bg-slate-50/70 border-slate-200'
+                      }`}
+                    >
+                      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                        <div className="space-y-1">
+                          <div className="flex items-center gap-2">
+                            <span className="text-xs font-bold text-slate-900">
+                              {w.assessmentName}
+                            </span>
+                            {isLatest && (
+                              <span className="text-[10px] font-mono font-bold uppercase bg-purple-200 text-purple-900 px-2 py-0.2 rounded-full">
+                                Most Recent Attempt
+                              </span>
+                            )}
+                          </div>
+                          <div className="text-[11px] text-slate-500 font-mono">
+                            Attempt #{w.attempt} recorded on {w.date}
+                          </div>
+                        </div>
+
+                        <div className="flex items-center gap-6 text-right sm:text-right">
+                          <div>
+                            <span className="text-[10px] text-slate-400 block uppercase font-medium">Recorded Score</span>
+                            <span className="font-mono font-extrabold text-slate-900 text-base">
+                              {w.score}%
+                            </span>
+                          </div>
+                          <div className="w-28 text-left">
+                            <div className="flex items-center justify-between text-[11px] mb-1">
+                              <span className="text-slate-500 font-medium">Forecast Weight</span>
+                              <span className="font-mono font-bold text-purple-700">{percentWeight}%</span>
+                            </div>
+                            <div className="w-full bg-slate-200 h-2 rounded-full overflow-hidden">
+                              <div 
+                                className={`h-full ${isLatest ? 'bg-purple-600' : 'bg-blue-600'}`}
+                                style={{ width: `${percentWeight * 1.5}%` }}
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+
+              <div className="p-3 bg-slate-50 rounded-xl border border-slate-200 flex items-center justify-between text-xs text-slate-600">
+                <span className="flex items-center gap-1.5">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                  <span>Weighted average synthesized smoothly from chronological records.</span>
+                </span>
+                <span className="font-mono text-[11px] text-slate-500">
+                  Total Weight: 100%
+                </span>
               </div>
             </div>
           )}
 
           {/* Traceable Contributing Evidence & Explanations */}
-          <div className="bg-white border border-slate-200 rounded-xl p-5 shadow-xs space-y-3">
-            <h3 className="text-sm font-bold text-slate-900">
-              Audit Trail of Contributing Factors
+          <div className="bg-white border border-slate-200 rounded-2xl p-5 shadow-xs space-y-3">
+            <h3 className="text-sm font-bold text-slate-900 flex items-center gap-2">
+              <Layers className="w-4 h-4 text-blue-600" />
+              <span>Key Predictive Drivers & Contributing Evidence</span>
             </h3>
             
             <div className="space-y-2 text-xs">
               {prediction.explanation.map((item, idx) => (
-                <div key={idx} className="p-3 bg-slate-50 border border-slate-200 rounded-lg flex items-start gap-2.5">
+                <div key={idx} className="p-3 bg-slate-50/80 border border-slate-200 rounded-xl flex items-start gap-2.5">
                   <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-                  <span className="text-slate-800 leading-relaxed">{item}</span>
+                  <span className="text-slate-800 leading-relaxed font-medium">{item}</span>
                 </div>
               ))}
             </div>
@@ -318,7 +351,7 @@ export const PredictionView: React.FC = () => {
             {includeMultiCategory && prediction.formulaBreakdown.multiCategoryRationale.length > 0 && (
               <div className="mt-3 pt-3 border-t border-slate-100">
                 <span className="font-semibold text-slate-700 text-xs block mb-2">
-                  Category Modifiers Applied:
+                  Academic & Behavioral Adjustments Applied:
                 </span>
                 <ul className="list-disc list-inside text-xs text-slate-600 space-y-1">
                   {prediction.formulaBreakdown.multiCategoryRationale.map((rat, i) => (

@@ -2,6 +2,20 @@ export type AssessmentType = 'Quiz' | 'Assignment' | 'Midterm' | 'Final' | 'Lab'
 
 export type AssessmentStatus = 'completed' | 'unattempted' | 'absent';
 
+export type UserRole = 'public' | 'student' | 'faculty';
+
+export interface AuthUser {
+  role: UserRole;
+  id: string; // studentId or teacherId
+  name: string;
+  rollId?: string;
+  email?: string;
+  designation?: string;
+  department: string;
+  semester?: number;
+  section?: string;
+}
+
 export interface Student {
   id: string; // e.g. "NIET-2026-001"
   name: string;

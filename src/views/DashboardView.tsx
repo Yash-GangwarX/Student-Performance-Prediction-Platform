@@ -109,18 +109,18 @@ export const DashboardView: React.FC<DashboardViewProps> = ({ onNavigate }) => {
             </h1>
             
             <p className="text-xs sm:text-sm text-slate-300 leading-relaxed max-w-2xl">
-              Real-time evaluation ledger with automated 20-question topic quizzes, manual marks recording for assignments and midterms, explainable AI forecasting, and printable official student dossiers.
+              Faculty evaluation dashboard for monitoring student topic mastery, entering assignment & midterm marks, inspecting explainable AI forecasting, and generating official academic dossiers.
             </p>
           </div>
 
           {/* Quick Context & Print Dossier CTA */}
           <div className="flex flex-wrap items-center gap-3 shrink-0">
             <button
-              onClick={() => onNavigate('quiz')}
+              onClick={() => onNavigate('assessments')}
               className="flex items-center gap-2 px-4 py-2.5 bg-amber-500 hover:bg-amber-400 text-slate-950 rounded-xl text-xs font-bold shadow-md transition-all cursor-pointer active:scale-98"
             >
               <Award className="w-4 h-4 text-slate-950" />
-              <span>Launch 20-Q Quiz</span>
+              <span>Record Assignment / Midterm Marks</span>
             </button>
 
             <button
@@ -276,35 +276,35 @@ export const DashboardView: React.FC<DashboardViewProps> = ({ onNavigate }) => {
             </div>
           </div>
 
-          {/* Module 2: Interactive Topic Quizzes (20 Questions) */}
+          {/* Module 2: Student Directory & Academic Dossiers (Faculty Observation) */}
           <div 
-            onClick={() => onNavigate('quiz')}
-            className="group bg-white p-5 rounded-xl border border-slate-200 hover:border-amber-400 shadow-xs hover:shadow-md transition-all cursor-pointer flex flex-col justify-between"
+            onClick={() => onNavigate('students')}
+            className="group bg-white p-5 rounded-xl border border-slate-200 hover:border-blue-400 shadow-xs hover:shadow-md transition-all cursor-pointer flex flex-col justify-between"
           >
             <div>
               <div className="flex items-center justify-between mb-3">
-                <div className="p-2.5 bg-amber-50 text-amber-800 group-hover:bg-amber-500 group-hover:text-slate-950 rounded-lg transition-colors">
-                  <Award className="w-5 h-5" />
+                <div className="p-2.5 bg-blue-50 text-blue-800 group-hover:bg-blue-600 group-hover:text-white rounded-lg transition-colors">
+                  <Users className="w-5 h-5" />
                 </div>
-                <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-amber-100 text-amber-900 border border-amber-200">
-                  20 Qs Auto-Scored
+                <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-blue-50 text-blue-900 border border-blue-200">
+                  Observe Scholars
                 </span>
               </div>
-              <h3 className="text-sm font-bold text-slate-900 group-hover:text-amber-900 transition-colors">
-                Topic Quizzes (20 Qs Auto)
+              <h3 className="text-sm font-bold text-slate-900 group-hover:text-blue-900 transition-colors">
+                Student Directory & Dossiers
               </h3>
               <p className="text-xs text-slate-500 mt-1.5 leading-relaxed">
-                Automated 20-question multiple-choice examinations across 9 topics. Automatically scores responses and syncs records straight into the student ledger.
+                Observe individual scholar profiles, review completed topic quiz attempts, inspect attendance consistency, and print official performance dossiers.
               </p>
             </div>
             
-            <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-amber-800 group-hover:text-amber-950">
-              <span>Start Assessment</span>
+            <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-blue-800 group-hover:text-blue-950">
+              <span>Inspect Roster</span>
               <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </div>
           </div>
 
-          {/* Module 3: AI Performance Prediction Engine */}
+          {/* Module 3: Performance Prediction Engine */}
           <div 
             onClick={() => onNavigate('prediction')}
             className="group bg-white p-5 rounded-xl border border-slate-200 hover:border-indigo-400 shadow-xs hover:shadow-md transition-all cursor-pointer flex flex-col justify-between"
@@ -315,14 +315,14 @@ export const DashboardView: React.FC<DashboardViewProps> = ({ onNavigate }) => {
                   <TrendingUp className="w-5 h-5" />
                 </div>
                 <span className="text-[10px] font-mono font-semibold px-2 py-0.5 rounded bg-indigo-50 text-indigo-700 border border-indigo-200">
-                  AI Modeling
+                  Grade Forecast
                 </span>
               </div>
               <h3 className="text-sm font-bold text-slate-900 group-hover:text-indigo-900 transition-colors">
                 Performance Prediction Engine
               </h3>
               <p className="text-xs text-slate-500 mt-1.5 leading-relaxed">
-                Explainable student forecasts using linear recency weighting (W_i = 2i/[n(n+1)]), capped trend adjustments, and confidence boundaries.
+                Clear diagnostic score forecasts based on recent test momentum, assignment consistency, and self-reported student study commitments.
               </p>
             </div>
             
@@ -543,10 +543,10 @@ export const DashboardView: React.FC<DashboardViewProps> = ({ onNavigate }) => {
             <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500">
               <span>Auto-scored quizzes & manual entries</span>
               <button
-                onClick={() => onNavigate('quiz')}
-                className="text-amber-800 hover:text-amber-950 font-bold cursor-pointer"
+                onClick={() => onNavigate('assessments')}
+                className="text-blue-800 hover:text-blue-950 font-bold cursor-pointer"
               >
-                Take a Quiz &rarr;
+                View Assessment Ledger &rarr;
               </button>
             </div>
           </div>

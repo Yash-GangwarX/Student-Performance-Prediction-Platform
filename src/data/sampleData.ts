@@ -88,6 +88,18 @@ export const INITIAL_SUBJECTS: Subject[] = [
     name: 'Artificial Intelligence & Machine Learning',
     code: 'CS302',
     semester: 3
+  },
+  {
+    id: 'SUB-MATH',
+    name: 'Discrete Mathematics',
+    code: 'CS303',
+    semester: 3
+  },
+  {
+    id: 'SUB-DBMS',
+    name: 'Database Management Systems',
+    code: 'CS304',
+    semester: 3
   }
 ];
 
@@ -157,6 +169,52 @@ export const INITIAL_TOPICS: Topic[] = [
     name: 'Neural Networks & Deep Learning',
     description: 'Multilayer perceptrons, backpropagation, activation functions, loss surfaces, and gradient descent variants.',
     prerequisites: ['TOPIC-AIML-01', 'TOPIC-AIML-03']
+  },
+
+  // Subject 3: Discrete Mathematics
+  {
+    id: 'TOPIC-MATH-01',
+    subjectId: 'SUB-MATH',
+    name: 'Propositional Logic & Truth Tables',
+    description: 'Tautologies, logical equivalences, predicate calculus, and inference rules.',
+    prerequisites: []
+  },
+  {
+    id: 'TOPIC-MATH-02',
+    subjectId: 'SUB-MATH',
+    name: 'Sets, Relations & Functions',
+    description: 'Equivalence relations, partial orderings, lattices, and bijective mappings.',
+    prerequisites: ['TOPIC-MATH-01']
+  },
+  {
+    id: 'TOPIC-MATH-03',
+    subjectId: 'SUB-MATH',
+    name: 'Graph Theory Foundations',
+    description: 'Eulerian/Hamiltonian paths, planar graphs, graph coloring, and isomorphism.',
+    prerequisites: ['TOPIC-MATH-02']
+  },
+
+  // Subject 4: Database Management Systems
+  {
+    id: 'TOPIC-DBMS-01',
+    subjectId: 'SUB-DBMS',
+    name: 'Relational Modeling & ER Diagrams',
+    description: 'Entity-relationship diagrams, primary/foreign keys, and relational schema mapping.',
+    prerequisites: []
+  },
+  {
+    id: 'TOPIC-DBMS-02',
+    subjectId: 'SUB-DBMS',
+    name: 'Database Normalization (1NF to BCNF)',
+    description: 'Functional dependencies, lossless joins, dependency preservation, 2NF, 3NF, and BCNF.',
+    prerequisites: ['TOPIC-DBMS-01']
+  },
+  {
+    id: 'TOPIC-DBMS-03',
+    subjectId: 'SUB-DBMS',
+    name: 'SQL Transactions & Indexing',
+    description: 'ACID properties, serializability, B-tree indexes, execution plans, and concurrency control.',
+    prerequisites: ['TOPIC-DBMS-02']
   }
 ];
 
@@ -576,6 +634,248 @@ export const INITIAL_ASSESSMENTS: AssessmentRecord[] = [
     date: '2026-09-12',
     obtainedMarks: 40,
     maxMarks: 50,
+    percentage: 80.0,
+    attemptNumber: 1,
+    status: 'completed'
+  },
+
+  // Discrete Mathematics (SUB-MATH) Assessments across scholars
+  {
+    id: 'REC-M01',
+    studentId: 'NIET-2026-001',
+    subjectId: 'SUB-MATH',
+    topicId: 'TOPIC-MATH-01',
+    assessmentName: 'Midterm 1 - Propositional Calculus & Truth Tables',
+    assessmentType: 'Midterm',
+    date: '2026-09-15',
+    obtainedMarks: 92,
+    maxMarks: 100,
+    percentage: 92.0,
+    attemptNumber: 1,
+    status: 'completed'
+  },
+  {
+    id: 'REC-M02',
+    studentId: 'NIET-2026-002',
+    subjectId: 'SUB-MATH',
+    topicId: 'TOPIC-MATH-01',
+    assessmentName: 'Midterm 1 - Propositional Calculus & Truth Tables',
+    assessmentType: 'Midterm',
+    date: '2026-09-15',
+    obtainedMarks: 84,
+    maxMarks: 100,
+    percentage: 84.0,
+    attemptNumber: 1,
+    status: 'completed'
+  },
+  {
+    id: 'REC-M03',
+    studentId: 'NIET-2026-002',
+    subjectId: 'SUB-MATH',
+    topicId: 'TOPIC-MATH-02',
+    assessmentName: 'Assignment 1 - Relations, Equivalence & Mappings',
+    assessmentType: 'Assignment',
+    date: '2026-09-28',
+    obtainedMarks: 42,
+    maxMarks: 50,
+    percentage: 84.0,
+    attemptNumber: 1,
+    status: 'completed'
+  },
+  {
+    id: 'REC-M04',
+    studentId: 'NIET-2026-003',
+    subjectId: 'SUB-MATH',
+    topicId: 'TOPIC-MATH-01',
+    assessmentName: 'Midterm 1 - Propositional Calculus & Truth Tables',
+    assessmentType: 'Midterm',
+    date: '2026-09-15',
+    obtainedMarks: 58,
+    maxMarks: 100,
+    percentage: 58.0,
+    attemptNumber: 1,
+    status: 'completed'
+  },
+  {
+    id: 'REC-M05',
+    studentId: 'NIET-2026-004',
+    subjectId: 'SUB-MATH',
+    topicId: 'TOPIC-MATH-03',
+    assessmentName: 'Quiz 1 - Graph Theory & Planarity',
+    assessmentType: 'Quiz',
+    date: '2026-09-18',
+    obtainedMarks: 18,
+    maxMarks: 20,
+    percentage: 90.0,
+    attemptNumber: 1,
+    status: 'completed'
+  },
+  {
+    id: 'REC-M06',
+    studentId: 'NIET-2026-005',
+    subjectId: 'SUB-MATH',
+    topicId: 'TOPIC-MATH-01',
+    assessmentName: 'Midterm 1 - Propositional Calculus & Truth Tables',
+    assessmentType: 'Midterm',
+    date: '2026-09-15',
+    obtainedMarks: 62,
+    maxMarks: 100,
+    percentage: 62.0,
+    attemptNumber: 1,
+    status: 'completed'
+  },
+  {
+    id: 'REC-M07',
+    studentId: 'NIET-2026-006',
+    subjectId: 'SUB-MATH',
+    topicId: 'TOPIC-MATH-02',
+    assessmentName: 'Assignment 1 - Relations, Equivalence & Mappings',
+    assessmentType: 'Assignment',
+    date: '2026-09-28',
+    obtainedMarks: 31,
+    maxMarks: 50,
+    percentage: 62.0,
+    attemptNumber: 1,
+    status: 'completed'
+  },
+  {
+    id: 'REC-M08',
+    studentId: 'NIET-2026-007',
+    subjectId: 'SUB-MATH',
+    topicId: 'TOPIC-MATH-01',
+    assessmentName: 'Midterm 1 - Propositional Calculus & Truth Tables',
+    assessmentType: 'Midterm',
+    date: '2026-09-15',
+    obtainedMarks: 78,
+    maxMarks: 100,
+    percentage: 78.0,
+    attemptNumber: 1,
+    status: 'completed'
+  },
+
+  // Database Management Systems (SUB-DBMS) Assessments across scholars
+  {
+    id: 'REC-D01',
+    studentId: 'NIET-2026-001',
+    subjectId: 'SUB-DBMS',
+    topicId: 'TOPIC-DBMS-02',
+    assessmentName: 'Midterm 1 - Normalization (1NF to BCNF)',
+    assessmentType: 'Midterm',
+    date: '2026-09-20',
+    obtainedMarks: 89,
+    maxMarks: 100,
+    percentage: 89.0,
+    attemptNumber: 1,
+    status: 'completed'
+  },
+  {
+    id: 'REC-D02',
+    studentId: 'NIET-2026-002',
+    subjectId: 'SUB-DBMS',
+    topicId: 'TOPIC-DBMS-02',
+    assessmentName: 'Midterm 1 - Normalization (1NF to BCNF)',
+    assessmentType: 'Midterm',
+    date: '2026-09-20',
+    obtainedMarks: 58,
+    maxMarks: 100,
+    percentage: 58.0,
+    attemptNumber: 1,
+    status: 'completed'
+  },
+  {
+    id: 'REC-D03',
+    studentId: 'NIET-2026-002',
+    subjectId: 'SUB-DBMS',
+    topicId: 'TOPIC-DBMS-01',
+    assessmentName: 'Quiz 1 - ER Modeling & Relational Schema',
+    assessmentType: 'Quiz',
+    date: '2026-08-30',
+    obtainedMarks: 15,
+    maxMarks: 20,
+    percentage: 75.0,
+    attemptNumber: 1,
+    status: 'completed'
+  },
+  {
+    id: 'REC-D04',
+    studentId: 'NIET-2026-002',
+    subjectId: 'SUB-DBMS',
+    topicId: 'TOPIC-DBMS-03',
+    assessmentName: 'Assignment 1 - SQL Transactions & Indexing',
+    assessmentType: 'Assignment',
+    date: '2026-10-05',
+    obtainedMarks: 33,
+    maxMarks: 50,
+    percentage: 66.0,
+    attemptNumber: 1,
+    status: 'completed'
+  },
+  {
+    id: 'REC-D05',
+    studentId: 'NIET-2026-003',
+    subjectId: 'SUB-DBMS',
+    topicId: 'TOPIC-DBMS-02',
+    assessmentName: 'Midterm 1 - Normalization (1NF to BCNF)',
+    assessmentType: 'Midterm',
+    date: '2026-09-20',
+    obtainedMarks: 52,
+    maxMarks: 100,
+    percentage: 52.0,
+    attemptNumber: 1,
+    status: 'completed'
+  },
+  {
+    id: 'REC-D06',
+    studentId: 'NIET-2026-004',
+    subjectId: 'SUB-DBMS',
+    topicId: 'TOPIC-DBMS-03',
+    assessmentName: 'Assignment 1 - SQL Transactions & Indexing',
+    assessmentType: 'Assignment',
+    date: '2026-10-05',
+    obtainedMarks: 44,
+    maxMarks: 50,
+    percentage: 88.0,
+    attemptNumber: 1,
+    status: 'completed'
+  },
+  {
+    id: 'REC-D07',
+    studentId: 'NIET-2026-005',
+    subjectId: 'SUB-DBMS',
+    topicId: 'TOPIC-DBMS-02',
+    assessmentName: 'Midterm 1 - Normalization (1NF to BCNF)',
+    assessmentType: 'Midterm',
+    date: '2026-09-20',
+    obtainedMarks: 56,
+    maxMarks: 100,
+    percentage: 56.0,
+    attemptNumber: 1,
+    status: 'completed'
+  },
+  {
+    id: 'REC-D08',
+    studentId: 'NIET-2026-006',
+    subjectId: 'SUB-DBMS',
+    topicId: 'TOPIC-DBMS-02',
+    assessmentName: 'Midterm 1 - Normalization (1NF to BCNF)',
+    assessmentType: 'Midterm',
+    date: '2026-09-20',
+    obtainedMarks: 60,
+    maxMarks: 100,
+    percentage: 60.0,
+    attemptNumber: 1,
+    status: 'completed'
+  },
+  {
+    id: 'REC-D09',
+    studentId: 'NIET-2026-007',
+    subjectId: 'SUB-DBMS',
+    topicId: 'TOPIC-DBMS-01',
+    assessmentName: 'Quiz 1 - ER Modeling & Relational Schema',
+    assessmentType: 'Quiz',
+    date: '2026-08-30',
+    obtainedMarks: 16,
+    maxMarks: 20,
     percentage: 80.0,
     attemptNumber: 1,
     status: 'completed'

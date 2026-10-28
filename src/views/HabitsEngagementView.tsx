@@ -18,7 +18,8 @@ export const HabitsEngagementView: React.FC = () => {
     state, 
     selectedStudent, 
     setSelectedStudentId, 
-    openReportModal 
+    openReportModal,
+    updateStudyHabit
   } = useApp();
 
   const [editHabit, setEditHabit] = useState<boolean>(false);
@@ -45,7 +46,6 @@ export const HabitsEngagementView: React.FC = () => {
 
   const handleSaveHabit = () => {
     if (!selectedStudent) return;
-    const existingIndex = state.studyHabits.findIndex(h => h.studentId === selectedStudent.id);
     const updatedRecord: StudyHabit = {
       id: habit?.id || `HABIT-${Date.now()}`,
       studentId: selectedStudent.id,
@@ -53,15 +53,11 @@ export const HabitsEngagementView: React.FC = () => {
       revisionFrequency: habitForm.revisionFrequency,
       practiceFrequency: habitForm.practiceFrequency,
       preparationPattern: habitForm.preparationPattern,
+      notes: habit?.notes,
       lastUpdated: new Date().toISOString().slice(0, 10)
     };
 
-    if (existingIndex >= 0) {
-      state.studyHabits[existingIndex] = updatedRecord;
-    } else {
-      state.studyHabits.push(updatedRecord);
-    }
-
+    updateStudyHabit(updatedRecord);
     setEditHabit(false);
     setSaveSuccess(true);
     setTimeout(() => setSaveSuccess(false), 3000);
@@ -231,6 +227,14 @@ export const HabitsEngagementView: React.FC = () => {
                   {habit?.preparationPattern || 'Not recorded'}
                 </span>
               </div>
+              {habit?.notes && (
+                <div className="col-span-2 p-2.5 bg-blue-50/70 border border-blue-200/80 rounded-lg text-xs">
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-blue-800 block mb-0.5">
+                    Student's Self-Reported Academic Note
+                  </span>
+                  <p className="text-slate-700 italic">"{habit.notes}"</p>
+                </div>
+              )}
             </div>
           )}
         </div>

@@ -132,7 +132,7 @@ export const AssessmentsView: React.FC<AssessmentsViewProps> = ({ onNavigate }) 
 
     // If type is quiz, manual addition is disabled
     if (formData.assessmentType === 'Quiz' && modalMode === 'create') {
-      setFormError('Manual mark entry is disabled for Quizzes. Please take the interactive 20-Question Topic Quiz instead.');
+      setFormError('Manual mark entry is disabled for Quizzes. Quizzes are self-administered by students in the Student Portal.');
       return;
     }
 
@@ -187,17 +187,6 @@ export const AssessmentsView: React.FC<AssessmentsViewProps> = ({ onNavigate }) 
         </div>
 
         <div className="flex flex-wrap items-center gap-2.5">
-          {/* Launch Topic Quiz Button */}
-          {onNavigate && (
-            <button
-              onClick={() => onNavigate('quiz')}
-              className="flex items-center gap-2 px-3.5 py-2 bg-blue-50 hover:bg-blue-100 text-blue-900 rounded-lg text-xs font-semibold border border-blue-200 transition-colors cursor-pointer"
-            >
-              <PlayCircle className="w-3.5 h-3.5 text-blue-700" />
-              <span>Take Topic Quiz (20 Qs)</span>
-            </button>
-          )}
-
           <button
             onClick={() => openReportModal(state.selectedStudentId)}
             className="flex items-center gap-2 px-3.5 py-2 bg-slate-100 hover:bg-slate-200 text-slate-800 rounded-lg text-xs font-semibold border border-slate-300 transition-colors cursor-pointer"
@@ -477,38 +466,25 @@ export const AssessmentsView: React.FC<AssessmentsViewProps> = ({ onNavigate }) 
                   >
                     <option value="Assignment">Assignment (Manual)</option>
                     <option value="Midterm">Midterm (Manual)</option>
-                    <option value="Final">Final (Manual)</option>
-                    <option value="Lab">Lab (Manual)</option>
-                    <option value="Quiz">Quiz (Auto 20-Q)</option>
+                    <option value="Final">Final Exam (Manual)</option>
+                    <option value="Lab">Lab Practical (Manual)</option>
+                    {modalMode === 'edit' && formData.assessmentType === 'Quiz' && (
+                      <option value="Quiz" disabled>Quiz (Auto 20-Q - Student Portal)</option>
+                    )}
                   </select>
                 </div>
               </div>
 
-              {/* If user chooses Quiz in manual creation modal, show warning & direct link */}
+              {/* Informational notice if Quiz record is viewed in edit mode */}
               {formData.assessmentType === 'Quiz' && (
-                <div className="p-3 bg-blue-50 border border-blue-200 rounded-lg text-blue-900 space-y-2">
-                  <div className="flex items-start gap-2">
-                    <HelpCircle className="w-4 h-4 text-blue-700 shrink-0 mt-0.5" />
-                    <div>
-                      <strong className="block">Interactive Auto-Graded Quiz Module</strong>
-                      <span>
-                        Manual score entry is disabled for Quizzes. Quizzes are completed through 20-question assessments that calculate marks automatically based on student answers.
-                      </span>
-                    </div>
+                <div className="p-3 bg-blue-50 border border-blue-200 rounded-lg text-blue-900 text-xs flex items-start gap-2">
+                  <HelpCircle className="w-4 h-4 text-blue-700 shrink-0 mt-0.5" />
+                  <div>
+                    <strong className="block">Interactive Auto-Graded Quiz Record</strong>
+                    <span>
+                      Quizzes are self-administered by students via the Student Portal and auto-calculated upon submission. Faculty can record and edit marks for Assignments, Midterms, Finals, and Labs.
+                    </span>
                   </div>
-                  {onNavigate && (
-                    <button
-                      type="button"
-                      onClick={() => {
-                        setIsModalOpen(false);
-                        onNavigate('quiz', formData.topicId);
-                      }}
-                      className="px-3 py-1.5 bg-blue-900 text-white rounded text-xs font-semibold hover:bg-blue-800 transition-colors inline-flex items-center gap-1.5 cursor-pointer"
-                    >
-                      <PlayCircle className="w-3.5 h-3.5" />
-                      <span>Launch 20-Question Topic Quiz Now</span>
-                    </button>
-                  )}
                 </div>
               )}
 

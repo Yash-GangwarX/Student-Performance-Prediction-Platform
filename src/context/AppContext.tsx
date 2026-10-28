@@ -6,12 +6,16 @@ import {
   Recommendation, 
   Subject, 
   Topic, 
-  DataSourceType 
+  DataSourceType,
+  AuthUser,
+  UserRole,
+  StudyHabit
 } from '../types';
 import { getInitialAppState } from '../data/sampleData';
 import { generateEvidenceBasedRecommendations } from '../utils/calculations';
 
 const STORAGE_KEY = 'SPPP_DATA_STORE_V4';
+const AUTH_STORAGE_KEY = 'NIET_PORTAL_AUTH_V1';
 
 const STUDENT_NAME_MAP: Record<string, string> = {
   'NIET-2026-001': 'Vedant',
@@ -49,6 +53,17 @@ interface AppContextValue {
     studentsToImport: Student[],
     assessmentsToImport: AssessmentRecord[]
   ) => { importedStudents: number; importedAssessments: number };
+  updateStudyHabit: (habit: StudyHabit) => { success: boolean; error?: string };
+  
+  // Role-based Portal Authentication
+  currentUser: AuthUser | null;
+  isAuthModalOpen: boolean;
+  authModalInitialRole: 'student' | 'faculty';
+  openAuthModal: (defaultRole?: 'student' | 'faculty') => void;
+  closeAuthModal: () => void;
+  loginAsStudent: (identifier: string, password: string) => { success: boolean; error?: string; student?: Student };
+  loginAsFaculty: (teacherId: string, password: string) => { success: boolean; error?: string; user?: AuthUser };
+  logout: () => void;
 }
 
 const AppContext = createContext<AppContextValue | null>(null);
@@ -87,6 +102,19 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
               studentId: a.studentId.replace('BTCS-2024-', 'NIET-2026-')
             }));
           }
+
+          // Ensure all 4 subjects and all curriculum topics are present in state
+          if (!parsed.subjects || parsed.subjects.length < 4) {
+            const initial = getInitialAppState();
+            parsed.subjects = initial.subjects;
+            parsed.topics = initial.topics;
+            
+            // If missing MATH or DBMS assessments, merge them in
+            const existingIds = new Set((parsed.assessments || []).map((a: AssessmentRecord) => a.id));
+            const missingAssessments = initial.assessments.filter(a => !existingIds.has(a.id));
+            parsed.assessments = [...(parsed.assessments || []), ...missingAssessments];
+          }
+
           return parsed;
         }
       }
@@ -97,6 +125,110 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   });
 
   const [isReportModalOpen, setIsReportModalOpen] = useState(false);
+
+  // User Authentication State (Public college site when null, or role-based user)
+  const [currentUser, setCurrentUser] = useState<AuthUser | null>(() => {
+    try {
+      const savedAuth = localStorage.getItem(AUTH_STORAGE_KEY);
+      if (savedAuth) {
+        return JSON.parse(savedAuth);
+      }
+    } catch (e) {
+      console.warn('Failed to parse auth user from storage', e);
+    }
+    return null; // Public open college website by default!
+  });
+
+  const [isAuthModalOpen, setIsAuthModalOpen] = useState<boolean>(false);
+  const [authModalInitialRole, setAuthModalInitialRole] = useState<'student' | 'faculty'>('student');
+
+  const openAuthModal = (defaultRole: 'student' | 'faculty' = 'student') => {
+    setAuthModalInitialRole(defaultRole);
+    setIsAuthModalOpen(true);
+  };
+
+  const closeAuthModal = () => {
+    setIsAuthModalOpen(false);
+  };
+
+  const loginAsStudent = (identifier: string, password: string) => {
+    const trimmedId = identifier.trim().toLowerCase();
+    const cleanPw = password.trim();
+
+    if (cleanPw !== '123') {
+      return { success: false, error: 'Incorrect student password. Please enter "123".' };
+    }
+
+    // Match student by name or roll ID or email
+    const found = state.students.find(s => 
+      s.name.toLowerCase() === trimmedId || 
+      s.id.toLowerCase() === trimmedId ||
+      s.id.toLowerCase().endsWith(trimmedId) ||
+      (s.email && s.email.toLowerCase() === trimmedId)
+    );
+
+    if (!found) {
+      return { 
+        success: false, 
+        error: `Student "${identifier}" was not found. Please choose or enter a student name (e.g., Vyash, Vedant, Yogesh, Yash, Rahul, Gyanendra, Anubhav) or Roll ID (e.g. NIET-2026-002).` 
+      };
+    }
+
+    const authUser: AuthUser = {
+      role: 'student',
+      id: found.id,
+      name: found.name,
+      rollId: found.id,
+      email: found.email,
+      department: 'Computer Science and Engineering',
+      semester: found.semester,
+      section: found.section
+    };
+
+    setCurrentUser(authUser);
+    setState(prev => ({ ...prev, selectedStudentId: found.id }));
+    try {
+      localStorage.setItem(AUTH_STORAGE_KEY, JSON.stringify(authUser));
+    } catch (e) {
+      console.error(e);
+    }
+    setIsAuthModalOpen(false);
+    return { success: true, student: found };
+  };
+
+  const loginAsFaculty = (teacherId: string, password: string) => {
+    const cleanPw = password.trim();
+    if (cleanPw !== '12345') {
+      return { success: false, error: 'Incorrect faculty password. Please enter "12345".' };
+    }
+
+    const cleanId = teacherId.trim() || 'FAC-101';
+    const authUser: AuthUser = {
+      role: 'faculty',
+      id: cleanId,
+      name: 'Dr. S. K. Sharma',
+      designation: 'Professor & Head of Department (CSE)',
+      department: 'Computer Science and Engineering'
+    };
+
+    setCurrentUser(authUser);
+    try {
+      localStorage.setItem(AUTH_STORAGE_KEY, JSON.stringify(authUser));
+    } catch (e) {
+      console.error(e);
+    }
+    setIsAuthModalOpen(false);
+    return { success: true, user: authUser };
+  };
+
+  const logout = () => {
+    setCurrentUser(null);
+    try {
+      localStorage.removeItem(AUTH_STORAGE_KEY);
+    } catch (e) {
+      console.error(e);
+    }
+  };
 
   // Sync to local storage on state change
   useEffect(() => {
@@ -358,6 +490,25 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     };
   };
 
+  const updateStudyHabit = (updatedHabit: StudyHabit) => {
+    setState(prev => {
+      const existingIdx = prev.studyHabits.findIndex(h => h.studentId === updatedHabit.studentId);
+      let newHabits: StudyHabit[];
+      if (existingIdx >= 0) {
+        newHabits = [...prev.studyHabits];
+        newHabits[existingIdx] = updatedHabit;
+      } else {
+        newHabits = [...prev.studyHabits, updatedHabit];
+      }
+      return {
+        ...prev,
+        studyHabits: newHabits,
+        dataSource: prev.dataSource === 'synthetic' ? 'manual' : prev.dataSource
+      };
+    });
+    return { success: true };
+  };
+
   return (
     <AppContext.Provider
       value={{
@@ -382,7 +533,16 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         deleteAssessment,
         toggleRecommendation,
         resetToSampleData,
-        importCSVRecords
+        importCSVRecords,
+        updateStudyHabit,
+        currentUser,
+        isAuthModalOpen,
+        authModalInitialRole,
+        openAuthModal,
+        closeAuthModal,
+        loginAsStudent,
+        loginAsFaculty,
+        logout
       }}
     >
       {children}

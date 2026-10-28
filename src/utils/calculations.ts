@@ -505,8 +505,8 @@ export function generateEvidenceBasedRecommendations(
         subjectId: topic.subjectId,
         topicId: topic.id,
         title: `Comprehensive Concept Revision: ${topic.name}`,
-        recommendedAction: `Focus revision on ${topic.name} lecture notes and complete 3 structured sample problems.`,
-        reason: `Average score of ${summary.averagePercentage}% is below the required ${reviewThreshold}% threshold.`,
+        recommendedAction: `Review lecture notes on ${topic.name}, solve 3 benchmark problems, and complete the 20-Question Topic Quiz in the portal to verify retention.`,
+        reason: `Average score of ${summary.averagePercentage}% is below the required ${reviewThreshold}% passing threshold.`,
         supportingRuleOrData: `Rule: Topic average < ${reviewThreshold}%. Historical lowest score: ${summary.minPercentage}%.`,
         priority: 'High',
         isCompleted: false,
@@ -521,7 +521,7 @@ export function generateEvidenceBasedRecommendations(
         subjectId: topic.subjectId,
         topicId: topic.id,
         title: `Halt Score Drift in ${topic.name}`,
-        recommendedAction: `Schedule a 45-minute error review session to analyze mistakes in recent assessments.`,
+        recommendedAction: `Schedule a 45-minute error review session to analyze mistakes in recent assessments, then attempt the 20-Question Quiz to recover momentum.`,
         reason: `Recent scores are tapering downward (latest attempt: ${summary.recentScore}%).`,
         supportingRuleOrData: `Rule: Chronological slope is negative over ${summary.attemptsCount} attempts.`,
         priority: 'Medium',
@@ -537,7 +537,7 @@ export function generateEvidenceBasedRecommendations(
         subjectId: topic.subjectId,
         topicId: topic.id,
         title: `Attempt Diagnostic Quiz for ${topic.name}`,
-        recommendedAction: `Take a 15-question baseline assessment to establish topic performance data.`,
+        recommendedAction: `Take the official 20-Question Topic Quiz in the portal to establish baseline diagnostic performance data.`,
         reason: `No assessment records exist to evaluate mastery or compute predictive projections.`,
         supportingRuleOrData: `Rule: Minimum 1 assessment required for baseline calculation.`,
         priority: 'Low',
@@ -570,22 +570,36 @@ export function generateEvidenceBasedRecommendations(
 
   // Rule 6: Study Habit check
   if (studyHabit && studyHabit.studentId === student.id) {
-    if (studyHabit.studyHoursPerWeek < 4) {
+    if (studyHabit.studyHoursPerWeek < 6) {
       recommendations.push({
         id: `rec-habit-${student.id}`,
         studentId: student.id,
         subjectId: 'general',
         topicId: 'general',
         title: `Increase Weekly Dedicated Study Hours`,
-        recommendedAction: `Establish a regular study block of at least 1 hour, 4 times per week.`,
+        recommendedAction: `Set aside at least 1.5 to 2 hours of daily study distributed across subjects, as self-reported in your Study Habits dashboard.`,
         reason: `Self-reported study time of ${studyHabit.studyHoursPerWeek} hrs/week is below the recommended curriculum pace.`,
         supportingRuleOrData: `Self-reported study habit record (Category C).`,
-        priority: 'Medium',
+        priority: 'High',
         isCompleted: false,
         category: 'Practice Reinforcement'
       });
     }
   }
+
+  // STRICT PRIORITY ORDERING: High Priority items are arranged UPPER in the lane
+  const priorityRank: Record<string, number> = {
+    'High': 1,
+    'Medium': 2,
+    'Low': 3
+  };
+
+  recommendations.sort((a, b) => {
+    const rankA = priorityRank[a.priority] || 99;
+    const rankB = priorityRank[b.priority] || 99;
+    if (rankA !== rankB) return rankA - rankB; // High (1) before Medium (2) before Low (3)
+    return a.title.localeCompare(b.title);
+  });
 
   return recommendations;
 }

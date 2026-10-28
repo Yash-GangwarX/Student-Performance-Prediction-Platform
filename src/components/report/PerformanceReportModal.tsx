@@ -365,21 +365,24 @@ export const PerformanceReportModal: React.FC = () => {
                 </div>
               </div>
 
-              {/* Formula & Weighting Audit Table */}
+              {/* Assessment Momentum & Influence Timeline */}
               {prediction.formulaBreakdown.recencyWeights.length > 0 && (
                 <div>
                   <span className="text-[11px] font-semibold text-slate-700 block mb-1">
-                    Recency Weight Breakdown (Sum of Weights = 1.000):
+                    Recent Assessment Momentum & Forecast Influence:
                   </span>
                   <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
                     {prediction.formulaBreakdown.recencyWeights.map(w => (
-                      <div key={w.attempt} className="bg-white border border-purple-100 rounded p-1.5 font-mono text-[10px]">
-                        <div className="text-slate-500">Attempt {w.attempt} ({w.date})</div>
-                        <div className="text-slate-900 font-bold">
-                          Score: {w.score}% · Weight: {w.weight}
+                      <div key={w.attempt} className="bg-white border border-purple-100 rounded p-2 text-[10px]">
+                        <div className="text-slate-500 font-medium">Attempt {w.attempt} ({w.date})</div>
+                        <div className="text-slate-900 font-bold text-xs mt-0.5">
+                          Score: {w.score}%
                         </div>
-                        <div className="text-purple-700 text-[9px]">
-                          Weighted = {w.weightedScore}%
+                        <div className="text-purple-700 text-[10px] font-semibold mt-1">
+                          Forecast Influence: {(w.weight * 100).toFixed(0)}%
+                        </div>
+                        <div className="text-slate-400 text-[9px]">
+                          Points contributed: {w.weightedScore.toFixed(1)}
                         </div>
                       </div>
                     ))}
