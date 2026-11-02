@@ -20,7 +20,8 @@ import {
   Sparkles,
   ArrowUpRight,
   ShieldAlert,
-  GraduationCap
+  GraduationCap,
+  FileText
 } from 'lucide-react';
 
 interface DashboardViewProps {
@@ -388,30 +389,30 @@ export const DashboardView: React.FC<DashboardViewProps> = ({ onNavigate }) => {
             </div>
           </div>
 
-          {/* Module 6: Targeted Academic Interventions */}
+          {/* Module 6: Official Academic Dossiers & Reports */}
           <div 
-            onClick={() => onNavigate('recommendations')}
-            className="group bg-white p-5 rounded-xl border border-slate-200 hover:border-teal-400 shadow-xs hover:shadow-md transition-all cursor-pointer flex flex-col justify-between"
+            onClick={() => onNavigate('reports')}
+            className="group bg-white p-5 rounded-xl border border-slate-200 hover:border-blue-400 shadow-xs hover:shadow-md transition-all cursor-pointer flex flex-col justify-between"
           >
             <div>
               <div className="flex items-center justify-between mb-3">
-                <div className="p-2.5 bg-teal-50 text-teal-900 group-hover:bg-teal-900 group-hover:text-white rounded-lg transition-colors">
-                  <Lightbulb className="w-5 h-5" />
+                <div className="p-2.5 bg-blue-50 text-blue-900 group-hover:bg-blue-900 group-hover:text-white rounded-lg transition-colors">
+                  <FileText className="w-5 h-5" />
                 </div>
-                <span className="text-[10px] font-mono font-semibold px-2 py-0.5 rounded bg-teal-50 text-teal-800">
-                  Interventions
+                <span className="text-[10px] font-mono font-semibold px-2 py-0.5 rounded bg-blue-50 text-blue-800">
+                  Dossiers
                 </span>
               </div>
-              <h3 className="text-sm font-bold text-slate-900 group-hover:text-teal-900 transition-colors">
-                Targeted Interventions
+              <h3 className="text-sm font-bold text-slate-900 group-hover:text-blue-900 transition-colors">
+                Official Reports & Dossiers
               </h3>
               <p className="text-xs text-slate-500 mt-1.5 leading-relaxed">
-                Algorithmic, evidence-based academic remediation plans prioritizing topics with low mastery and foundational prerequisites.
+                Export and print accredited academic dossiers, multi-category telemetry portfolios, and performance transcripts for faculty review.
               </p>
             </div>
             
-            <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-teal-800 group-hover:text-teal-950">
-              <span>View Interventions</span>
+            <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-blue-800 group-hover:text-blue-950">
+              <span>View Dossiers & Reports</span>
               <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </div>
           </div>

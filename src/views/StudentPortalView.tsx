@@ -52,6 +52,10 @@ export const StudentPortalView: React.FC<StudentPortalViewProps> = () => {
 
   const [activeStudentTab, setActiveStudentTab] = useState<'overview' | 'habits' | 'quizzes' | 'marks' | 'interventions'>('overview');
   const [selectedQuizTopicId, setSelectedQuizTopicId] = useState<string | undefined>(undefined);
+  const [interventionSubTab, setInterventionSubTab] = useState<'prescriptions' | 'timetable'>('prescriptions');
+  const [interventionCategoryFilter, setInterventionCategoryFilter] = useState<string>('all');
+  const [interventionPriorityFilter, setInterventionPriorityFilter] = useState<string>('all');
+  const [showCompletedInterventions, setShowCompletedInterventions] = useState<boolean>(true);
 
   // The active student is guaranteed to be the logged-in student (or selectedStudent)
   const student = selectedStudent || state.students[0];
@@ -276,8 +280,8 @@ export const StudentPortalView: React.FC<StudentPortalViewProps> = () => {
                 : 'text-slate-300 hover:text-white hover:bg-slate-800/70'
             }`}
           >
-            <Calendar className="w-4 h-4 text-emerald-300" />
-            <span>Personalized Study Plan</span>
+            <Lightbulb className="w-4 h-4 text-amber-300" />
+            <span>Targeted Interventions & Study Plan</span>
           </button>
         </div>
       </div>
@@ -907,13 +911,233 @@ export const StudentPortalView: React.FC<StudentPortalViewProps> = () => {
       )}
 
       {/* =========================================================================
-          TAB 5: PERSONALIZED STUDY PLAN & TIMETABLE (WITH TEST/QUIZ DIAGNOSTICS)
+          TAB 5: TARGETED INTERVENTIONS & STUDY PLAN (DUAL ARCHITECTURE)
           ========================================================================= */}
       {activeStudentTab === 'interventions' && (
-        <PersonalizedStudyPlanner 
-          student={student} 
-          onNavigateToQuiz={handleLaunchQuiz} 
-        />
+        <div className="space-y-6">
+          {/* Header & Sub-Tab Switcher */}
+          <div className="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div>
+              <div className="flex items-center gap-2">
+                <span className="p-2 bg-amber-50 text-amber-700 rounded-lg">
+                  <Lightbulb className="w-5 h-5" />
+                </span>
+                <div>
+                  <h2 className="text-lg font-bold text-slate-900 tracking-tight">
+                    Targeted Interventions & Personalized Study Architecture
+                  </h2>
+                  <p className="text-xs text-slate-500 mt-0.5">
+                    Algorithmic study prescriptions based on topic deficits and an automated multi-subject weekly timetable.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Sub-tab navigation */}
+            <div className="flex items-center bg-slate-100 p-1 rounded-xl text-xs font-semibold">
+              <button
+                onClick={() => setInterventionSubTab('prescriptions')}
+                className={`px-3.5 py-1.5 rounded-lg transition-all cursor-pointer flex items-center gap-2 ${
+                  interventionSubTab === 'prescriptions'
+                    ? 'bg-white text-slate-900 shadow-xs font-bold'
+                    : 'text-slate-600 hover:text-slate-900'
+                }`}
+              >
+                <Target className="w-3.5 h-3.5 text-amber-600" />
+                <span>Targeted Prescriptions</span>
+                <span className="px-1.5 py-0.2 bg-rose-100 text-rose-800 rounded-full text-[10px] font-mono">
+                  {sortedRecommendations.filter(r => r.priority === 'High' && !r.isCompleted).length} Urgent
+                </span>
+              </button>
+
+              <button
+                onClick={() => setInterventionSubTab('timetable')}
+                className={`px-3.5 py-1.5 rounded-lg transition-all cursor-pointer flex items-center gap-2 ${
+                  interventionSubTab === 'timetable'
+                    ? 'bg-white text-slate-900 shadow-xs font-bold'
+                    : 'text-slate-600 hover:text-slate-900'
+                }`}
+              >
+                <Calendar className="w-3.5 h-3.5 text-blue-600" />
+                <span>Multi-Subject Timetable</span>
+              </button>
+            </div>
+          </div>
+
+          {/* SUB-TAB 1: TARGETED PRESCRIPTIONS */}
+          {interventionSubTab === 'prescriptions' && (
+            <div className="space-y-4">
+              {/* Filter Toolbar */}
+              <div className="bg-white p-3.5 rounded-xl border border-slate-200 text-xs flex flex-wrap items-center justify-between gap-3 shadow-xs">
+                <div className="flex flex-wrap items-center gap-3">
+                  <div className="flex items-center gap-1.5">
+                    <span className="text-slate-500 font-medium">Category:</span>
+                    <select
+                      value={interventionCategoryFilter}
+                      onChange={e => setInterventionCategoryFilter(e.target.value)}
+                      className="border border-slate-200 rounded-lg px-2.5 py-1.5 bg-slate-50 text-slate-800 focus:outline-none cursor-pointer"
+                    >
+                      <option value="all">All Categories</option>
+                      <option value="Prerequisite Review">Prerequisite Review</option>
+                      <option value="Concept Revision">Concept Revision</option>
+                      <option value="Practice Reinforcement">Practice Reinforcement</option>
+                      <option value="Data Collection">Data Collection</option>
+                    </select>
+                  </div>
+
+                  <div className="flex items-center gap-1.5">
+                    <span className="text-slate-500 font-medium">Priority:</span>
+                    <div className="flex items-center bg-slate-100 p-0.5 rounded-lg">
+                      {(['all', 'High', 'Medium', 'Low'] as const).map(p => (
+                        <button
+                          key={p}
+                          onClick={() => setInterventionPriorityFilter(p)}
+                          className={`px-2 py-1 rounded text-[11px] font-semibold cursor-pointer transition-colors ${
+                            interventionPriorityFilter === p
+                              ? 'bg-white text-slate-900 shadow-2xs font-bold'
+                              : 'text-slate-600 hover:text-slate-900'
+                          }`}
+                        >
+                          {p === 'all' ? 'All' : p}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  <label className="flex items-center gap-1.5 text-slate-600 cursor-pointer ml-1">
+                    <input
+                      type="checkbox"
+                      checked={showCompletedInterventions}
+                      onChange={e => setShowCompletedInterventions(e.target.checked)}
+                      className="rounded text-blue-900 focus:ring-0"
+                    />
+                    <span>Show Completed</span>
+                  </label>
+                </div>
+
+                <div className="text-slate-500 font-mono text-[11px]">
+                  Priority Order: High &rarr; Medium &rarr; Low
+                </div>
+              </div>
+
+              {/* Cards List */}
+              <div className="space-y-3">
+                {sortedRecommendations
+                  .filter(rec => {
+                    if (interventionCategoryFilter !== 'all' && rec.category !== interventionCategoryFilter) return false;
+                    if (interventionPriorityFilter !== 'all' && rec.priority !== interventionPriorityFilter) return false;
+                    if (!showCompletedInterventions && rec.isCompleted) return false;
+                    return true;
+                  })
+                  .map(rec => {
+                    const isHigh = rec.priority === 'High';
+                    const topic = state.topics.find(t => t.id === rec.topicId);
+                    const subject = state.subjects.find(s => s.id === rec.subjectId);
+
+                    return (
+                      <div
+                        key={rec.id}
+                        className={`bg-white border rounded-xl p-5 shadow-xs transition-all ${
+                          rec.isCompleted
+                            ? 'border-slate-200 bg-slate-50/50 opacity-60'
+                            : isHigh
+                            ? 'border-rose-200 bg-rose-50/20 hover:border-rose-300'
+                            : rec.priority === 'Medium'
+                            ? 'border-amber-200 bg-amber-50/15 hover:border-amber-300'
+                            : 'border-slate-200 hover:border-slate-300'
+                        }`}
+                      >
+                        <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+                          <div className="flex items-start gap-3.5">
+                            <button
+                              onClick={() => toggleRecommendation(rec.id)}
+                              className="mt-0.5 text-slate-400 hover:text-blue-900 cursor-pointer transition-colors"
+                              title={rec.isCompleted ? 'Mark as Pending' : 'Mark as Completed'}
+                            >
+                              {rec.isCompleted ? (
+                                <CheckSquare className="w-5 h-5 text-emerald-600" />
+                              ) : (
+                                <Square className="w-5 h-5" />
+                              )}
+                            </button>
+
+                            <div className="space-y-1.5">
+                              <div className="flex flex-wrap items-center gap-2">
+                                <span className={`px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider font-mono ${
+                                  rec.isCompleted
+                                    ? 'bg-slate-200 text-slate-600'
+                                    : isHigh
+                                    ? 'bg-rose-600 text-white'
+                                    : rec.priority === 'Medium'
+                                    ? 'bg-amber-500 text-slate-950'
+                                    : 'bg-slate-100 text-slate-700'
+                                }`}>
+                                  {rec.priority} Priority
+                                </span>
+
+                                <span className="text-[11px] text-slate-400 font-mono">
+                                  · {rec.category}
+                                </span>
+
+                                <h4 className={`text-sm font-bold ${rec.isCompleted ? 'line-through text-slate-400' : 'text-slate-900'}`}>
+                                  {rec.title}
+                                </h4>
+                              </div>
+
+                              <p className="text-xs text-slate-800 font-medium">
+                                <strong>Prescribed Action: </strong>{rec.recommendedAction}
+                              </p>
+
+                              <div className="text-xs text-slate-600 space-y-0.5">
+                                <div><strong>Remediation Reason: </strong>{rec.reason}</div>
+                                <div className="text-[11px] text-slate-500 font-mono">
+                                  <strong>Supporting Audit Rule: </strong>{rec.supportingRuleOrData}
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          {/* Quick Action Area */}
+                          <div className="flex sm:flex-col items-end justify-between sm:justify-start gap-2 shrink-0 pt-2 sm:pt-0 border-t sm:border-t-0 border-slate-100">
+                            <div className="text-right text-xs hidden sm:block">
+                              <span className="text-slate-400 block text-[10px] uppercase font-semibold">Course Context</span>
+                              <span className="font-semibold text-slate-800">{topic?.name || rec.topicId}</span>
+                              <span className="text-[10px] text-slate-400 block font-mono">{subject?.code || rec.subjectId}</span>
+                            </div>
+
+                            <div className="flex items-center gap-1.5">
+                              {rec.topicId && rec.topicId !== 'general' && !rec.isCompleted && (
+                                <button
+                                  onClick={() => handleLaunchQuiz(rec.topicId)}
+                                  className="px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-xs font-semibold shadow-2xs transition-colors cursor-pointer"
+                                >
+                                  Take 20 Qs
+                                </button>
+                              )}
+                              <button
+                                onClick={() => setInterventionSubTab('timetable')}
+                                className="px-2.5 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg text-xs font-semibold transition-colors cursor-pointer"
+                              >
+                                View Timetable
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
+              </div>
+            </div>
+          )}
+
+          {/* SUB-TAB 2: MULTI-SUBJECT TIMETABLE */}
+          {interventionSubTab === 'timetable' && (
+            <PersonalizedStudyPlanner 
+              student={student} 
+              onNavigateToQuiz={handleLaunchQuiz} 
+            />
+          )}
+        </div>
       )}
 
     </div>

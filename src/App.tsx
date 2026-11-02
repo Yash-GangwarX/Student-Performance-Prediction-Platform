@@ -6,7 +6,6 @@ import { AssessmentsView } from './views/AssessmentsView';
 import { PredictionView } from './views/PredictionView';
 import { TopicAnalysisView } from './views/TopicAnalysisView';
 import { HabitsEngagementView } from './views/HabitsEngagementView';
-import { RecommendationsView } from './views/RecommendationsView';
 import { ReportsView } from './views/ReportsView';
 import { AboutView } from './views/AboutView';
 import { PerformanceReportModal } from './components/report/PerformanceReportModal';
@@ -21,7 +20,6 @@ import {
   TrendingUp, 
   Target, 
   Clock, 
-  Lightbulb, 
   FileText, 
   Info,
   Printer,
@@ -79,10 +77,9 @@ const FACULTY_NAV_SECTIONS: NavSection[] = [
     ]
   },
   {
-    title: 'INTERVENTIONS & REPORTS',
+    title: 'OFFICIAL DOSSIERS & REPORTS',
     items: [
-      { id: 'recommendations', label: 'Targeted Interventions', icon: Lightbulb, hint: 'Evidence-based study actions' },
-      { id: 'reports', label: 'Official Reports', icon: FileText, hint: 'Printable faculty dossiers' },
+      { id: 'reports', label: 'Official Reports & Dossiers', icon: FileText, hint: 'Printable faculty dossiers' },
     ]
   },
   {
@@ -146,8 +143,6 @@ const MainContent: React.FC = () => {
         return <TopicAnalysisView />;
       case 'habits':
         return <HabitsEngagementView />;
-      case 'recommendations':
-        return <RecommendationsView />;
       case 'reports':
         return <ReportsView />;
       case 'about':
